@@ -1365,3 +1365,15 @@ main { overflow-x: clip; }
 .sm-hint { bottom: auto; top: 0.7rem; }
 @media (max-width: 520px) { .sm-hint { position: static; padding: 0.6rem 0 0; } }
 .sm-skill.below .sm-skill-label { text-anchor: middle; transform: translate(0, 34px); font-size: 21px; }
+
+/* glitch + gradient together */
+.glitch.gradient-text::before,
+.glitch.gradient-text::after {
+  background: linear-gradient(90deg, var(--accent), #a78bfa, #f472b6, var(--accent));
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.glitch.gradient-text::before { animation: glitchA 7s infinite steps(1), gradientMove 6s linear infinite; }
+.glitch.gradient-text::after  { animation: glitchB 7s infinite steps(1), gradientMove 6s linear infinite; }
