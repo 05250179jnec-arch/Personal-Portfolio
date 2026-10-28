@@ -1,43 +1,110 @@
-  <!-- Navigation bar -->
-  <header class="navbar">
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Kuenzang Lhamo — Diploma student in Computer System and Network at Jigme Namgyel Engineering College, Bhutan." />
+  <title>Kuenzang Lhamo | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== Navigation ===== -->
+  <header class="navbar" id="navbar">
     <nav class="nav container">
       <a href="#home" class="logo">KL<span>.</span></a>
 
       <ul class="nav-links" id="navLinks">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#lab" class="nav-link">Lab</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#certificates" class="nav-link">Certificates</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
 
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle light and dark theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+        <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </nav>
   </header>
 
   <main>
-    <!-- Home section -->
+    <!-- ===== 1. Home ===== -->
     <section class="hero container" id="home">
-      <div class="hero-text">
-        <p class="eyebrow">Hello, I'm</p>
-        <h1>Kuenzang Lhamo</h1>
-        <h2>Computer System &amp; Network Student | Aspiring Network &amp; Security Engineer</h2>
+      <div class="hero-text reveal">
+        <p class="eyebrow"><span class="wave">👋</span> Hello, I'm</p>
+        <h1 class="hero-name"><span class="glitch" data-text="Kuenzang">Kuenzang</span> <span class="gradient-text">Lhamo</span></h1>
+        <p class="role-line">I <span class="role" id="role">build networks</span><span class="role-caret">|</span></p>
+        <h2 class="headline">Computer System &amp; Network Student <span class="accent">|</span> Aspiring Network &amp; Security Engineer</h2>
         <p class="intro">
-          I'm a diploma student at Jigme Namgyel Engineering College, Bhutan, learning how
-          networks are designed, secured and automated.
+          I'm a diploma student at Jigme Namgyel Engineering College, Bhutan, learning how networks are
+          designed, secured and automated, and building web applications along the way.
         </p>
         <div class="hero-buttons">
-          <a href="#projects" class="btn btn-primary">View My Projects</a>
+          <a href="#projects" class="btn btn-primary btn-shine">View My Projects</a>
           <a href="#contact" class="btn btn-outline">Get In Touch</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><span class="stat-num" data-count="7">0</span><span class="stat-label">Projects</span></div>
+          <div class="stat"><span class="stat-num" data-count="5">0</span><span class="stat-label">Certificates</span></div>
+          <div class="stat"><span class="stat-num" data-count="4">0</span><span class="stat-label">Languages</span></div>
         </div>
       </div>
 
-      <div class="hero-image">
-        <img src="assets/profile.jpg" alt="Photo of Kuenzang Lhamo" />
+      <div class="hero-visual reveal">
+        <div class="orbit-wrap">
+          <div class="ring"></div>
+          <div class="photo-wrap">
+            <img src="assets/profile.jpg" alt="Kuenzang Lhamo standing outdoors in a pink kira jacket" />
+          </div>
+          <div class="orbit" aria-hidden="true">
+            <span class="orbit-icon" style="--i:0" title="Routing"><svg viewBox="0 0 24 24"><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 16.5h.01M11 16.5h.01M8 9a6 6 0 0 1 8 0M5.5 6.5a10 10 0 0 1 13 0"/></svg></span>
+            <span class="orbit-icon" style="--i:1" title="Security"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
+            <span class="orbit-icon" style="--i:2" title="Code"><svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></span>
+            <span class="orbit-icon" style="--i:3" title="Database"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span>
+            <span class="orbit-icon" style="--i:4" title="Linux"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9l3 3-3 3M13 15h4"/></svg></span>
+            <span class="orbit-icon" style="--i:5" title="Cloud"><svg viewBox="0 0 24 24"><path d="M7 18h10a4 4 0 0 0 .6-8A6 6 0 0 0 6 9.5 4.3 4.3 0 0 0 7 18z"/></svg></span>
+          </div>
+        </div>
+        <div class="terminal" id="terminal">
+          <div class="terminal-bar">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <span class="terminal-title">kuenzang@jnec: ~</span>
+          </div>
+          <div class="terminal-body" id="termBody">
+            <div id="termOutput" aria-live="polite">
+              <p class="out">Welcome! This is a working terminal.</p>
+              <p class="out">Type <span class="kw">help</span> to see what you can run.</p>
+            </div>
+            <form class="term-line" id="termForm" autocomplete="off">
+              <label for="termInput" class="prompt">kuenzang@jnec:~$</label>
+              <input id="termInput" type="text" spellcheck="false" autocapitalize="off" aria-label="Terminal command" />
+            </form>
+          </div>
+          <div class="term-chips" aria-label="Quick commands">
+            <button type="button" data-cmd="whoami">whoami</button>
+            <button type="button" data-cmd="skills">skills</button>
+            <button type="button" data-cmd="ping jnec.edu.bt">ping</button>
+            <button type="button" data-cmd="ipconfig">ipconfig</button>
+          </div>
+        </div>
       </div>
+      <a href="#about" class="scroll-cue" aria-label="Scroll to About"><span></span></a>
     </section>
+
         <!-- About section -->
     <section class="section" id="about">
       <div class="container">
@@ -79,6 +146,7 @@
         </div>
       </div>
     </section>
+
         <!-- Skills section -->
     <section class="section" id="skills">
       <div class="container">
@@ -127,6 +195,7 @@
         </div>
       </div>
     </section>
+
            <!-- Projects section -->
     <section class="section" id="projects">
       <div class="container">
@@ -253,6 +322,7 @@
         </div>
       </div>
     </section>
+
         <!-- Education section -->
     <section class="section" id="education">
       <div class="container">
@@ -304,6 +374,7 @@
         </ul>
       </div>
     </section>
+
         <!-- Experience section -->
     <section class="section" id="experience">
       <div class="container">
@@ -350,4 +421,8 @@
         </article>
       </div>
     </section>
+
   </main>
+
+</body>
+</html>
