@@ -603,6 +603,67 @@
     </section>
 
 
+    <!-- ===== Lab: tools built in this page ===== -->
+    <section class="section alt" id="lab">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-num">~/lab</span>
+          <h2>Network Lab</h2>
+        </div>
+        <p class="lab-intro reveal">Small tools I built into this portfolio with JavaScript, using what I've learned in my networking courses. Try them out.</p>
+
+        <div class="lab-grid">
+          <!-- Subnet calculator -->
+          <div id="lab-subnet" class="lab-card reveal">
+            <div class="lab-head">
+              <h3>IPv4 Subnet Calculator</h3>
+              <span class="badge">JavaScript · bitwise ops</span>
+            </div>
+            <form id="subnetForm" class="subnet-form" autocomplete="off">
+              <div class="subnet-inputs">
+                <input type="text" id="ipInput" value="192.168.10.25" aria-label="IP address" spellcheck="false" />
+                <span class="slash">/</span>
+                <input type="number" id="cidrInput" value="26" min="0" max="32" aria-label="CIDR prefix length" />
+                <button type="submit" class="btn btn-primary">Calculate</button>
+              </div>
+              <small class="error" id="subnetError"></small>
+            </form>
+            <dl class="subnet-result" id="subnetResult"></dl>
+            <div class="bits" id="bitsView" aria-label="Binary view of the address"></div>
+            <p class="bits-legend"><span class="key net"></span> network bits <span class="key host"></span> host bits</p>
+          </div>
+
+          <!-- Packet travel / ACL simulator -->
+          <div id="lab-acl" class="lab-card reveal">
+            <div class="lab-head">
+              <h3>ACL Packet Simulator</h3>
+              <span class="badge">Inspired by my eBGP &amp; ACL project</span>
+            </div>
+            <p class="lab-note">An extended ACL on the bank's edge router. Pick a packet and watch the router check it against each rule, top to bottom.</p>
+            <pre class="acl" id="aclRules"></pre>
+            <div class="acl-controls">
+              <label for="packetSelect">Packet</label>
+              <select id="packetSelect">
+                <option value="0">Staff PC → Web server, TCP 443 (HTTPS)</option>
+                <option value="1">Internet host → DB server, TCP 3306 (MySQL)</option>
+                <option value="2">Staff PC → DB server, TCP 3306 (MySQL)</option>
+                <option value="3">Internet host → Web server, TCP 23 (Telnet)</option>
+              </select>
+              <button type="button" class="btn btn-outline" id="aclRun">Send packet</button>
+            </div>
+            <div class="topo" aria-hidden="true">
+              <span class="node">Source</span>
+              <span class="wire"><span class="packet" id="packet"></span></span>
+              <span class="node router">R1 · ACL</span>
+              <span class="wire"><span class="packet" id="packet2"></span></span>
+              <span class="node">Destination</span>
+            </div>
+            <p class="acl-verdict" id="aclVerdict" role="status"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
         <!-- Education section -->
     <section class="section" id="education">
       <div class="container">
