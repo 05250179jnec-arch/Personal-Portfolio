@@ -10,7 +10,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="is-loading">
+  <!-- Boot-up intro (skips itself after ~2s; click to skip) -->
+  <div id="loader" aria-hidden="true">
+    <div class="boot">
+      <p class="boot-line"><span class="ok">[ OK ]</span> Initialising network interfaces...</p>
+      <p class="boot-line"><span class="ok">[ OK ]</span> Establishing eBGP session with AS 65001...</p>
+      <p class="boot-line"><span class="ok">[ OK ]</span> Applying ACL BANK-EDGE...</p>
+      <p class="boot-line"><span class="ok">[ OK ]</span> Loading portfolio: kuenzang_lhamo</p>
+      <div class="boot-bar"><span></span></div>
+    </div>
+  </div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
   <canvas id="netCanvas" aria-hidden="true"></canvas>
 
   <!-- ===== Navigation ===== -->
@@ -1105,5 +1117,6 @@
   <script src="js/certificates.js"></script>
   <script src="js/druk.js"></script>
   <script src="js/skillmap.js"></script>
+  <script src="js/motion.js"></script>
 </body>
 </html>
