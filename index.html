@@ -1,16 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kuenzang Lhamo | Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+  <!-- Navigation bar -->
+  <header class="navbar">
+    <nav class="nav container">
+      <a href="#home" class="logo">KL<span>.</span></a>
 
-  <h1>Kuenzang Lhamo</h1>
-  <p>Computer System &amp; Network Student</p>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
 
-  <script src="script.js"></script>
-</body>
-</html>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Home section -->
+    <section class="hero container" id="home">
+      <div class="hero-text">
+        <p class="eyebrow">Hello, I'm</p>
+        <h1>Kuenzang Lhamo</h1>
+        <h2>Computer System &amp; Network Student | Aspiring Network &amp; Security Engineer</h2>
+        <p class="intro">
+          I'm a diploma student at Jigme Namgyel Engineering College, Bhutan, learning how
+          networks are designed, secured and automated.
+        </p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">View My Projects</a>
+          <a href="#contact" class="btn btn-outline">Get In Touch</a>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <img src="assets/profile.jpg" alt="Photo of Kuenzang Lhamo" />
+      </div>
+    </section>
+  </main>
