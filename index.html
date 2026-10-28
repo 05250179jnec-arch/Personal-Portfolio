@@ -273,132 +273,335 @@
       </div>
     </section>
 
-           <!-- Projects section -->
+    <!-- ===== 4. Projects ===== -->
     <section class="section" id="projects">
       <div class="container">
-        <h2 class="section-title">Projects</h2>
+        <div class="section-head reveal">
+          <span class="section-num">~/projects</span>
+          <h2>Projects</h2>
+        </div>
 
         <div class="projects-grid">
+          <article id="proj-autoconnection" class="project-card wide featured reveal">
+            <div class="wide-grid">
+              <div class="wide-text">
+                <div class="project-top">
+                  <span class="project-type">Full-Stack Web App · Team Project</span>
+                  <span class="status-badge"><span class="pulse-dot"></span>In progress</span>
+                </div>
+                <h3>AutoConnection — Auto Workshop Management System</h3>
+                <p>
+                  A web system that replaces a workshop's paper job cards with one database and a separate dashboard for
+                  each role. Customers book and track repairs online, mechanics manage their assigned jobs, and admins
+                  oversee stock, suppliers, staff and reports. A three-person team project at JNEC, built in Agile sprints.
+                </p>
+                <ul class="sub-projects">
+                  <li><strong>Customer</strong> — register, add vehicles, book a repair with photos, track its live status and buy spare parts.</li>
+                  <li><strong>Mechanic</strong> — see assigned repair orders, move them from Pending to In progress to Complete, and log parts used.</li>
+                  <li><strong>Admin</strong> — assign mechanics, manage inventory and suppliers, approve purchase orders and generate reports.</li>
+                  <li><strong>Security</strong> — passwords hashed with bcrypt, JWT login and role checks on every request.</li>
+                </ul>
+                <ul class="tech"><li>React</li><li>Node.js</li><li>Express</li><li>MySQL</li><li>JWT</li><li>bcrypt</li><li>Postman</li><li>Selenium</li><li>JMeter</li><li>Figma</li></ul>
+                <div class="project-links">
+                  <a href="https://github.com/05240130jnec-ship-it/auto-workshop" target="_blank" rel="noopener" class="link">GitHub Repo ↗</a>
+                </div>
+              </div>
 
-          <!-- 1. AutoConnection -->
-          <article class="project-card">
-            <span class="project-type">Full-Stack Web App · In progress</span>
-            <h3>AutoConnection — Auto Workshop Management System</h3>
-            <p>
-              A team project that replaces a workshop's paper job cards with one web system.
-              Customers book and track repairs online, mechanics update the status of their jobs,
-              and admins manage stock, suppliers and reports.
-            </p>
-            <ul class="tech">
-              <li>React</li>
-              <li>Node.js</li>
-              <li>Express</li>
-              <li>MySQL</li>
-              <li>JWT</li>
-            </ul>
-            <a href="https://github.com/05240130jnec-ship-it/auto-workshop.git" target="_blank" rel="noopener">GitHub Repo ↗</a>
+              <div class="wide-media">
+                <div class="ac-app" aria-hidden="true">
+                  <div class="ac-bar">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                    <span class="ac-url">autoconnection / my-repairs</span>
+                  </div>
+                  <div class="ac-body">
+                    <div class="ac-side">
+                      <svg viewBox="0 0 40 46" class="ac-logo"><path d="M20 2l16 6v12c0 12-8 20-16 24C12 40 4 32 4 20V8z"/><path d="M12 24l6 6 10-12" class="tick"/></svg>
+                      <span class="ac-role r1">Customer</span>
+                      <span class="ac-role r2">Mechanic</span>
+                      <span class="ac-role r3">Admin</span>
+                    </div>
+                    <div class="ac-main">
+                      <div class="ac-job">
+                        <div>
+                          <p class="ac-job-title">Booking #AC-1042 · Brake service</p>
+                          <p class="ac-job-sub">Toyota · BP-1-A2345</p>
+                        </div>
+                        <span class="ac-status"><span class="s1">Pending</span><span class="s2">In progress</span><span class="s3">Complete</span></span>
+                      </div>
+                      <div class="ac-track">
+                        <div class="ac-line"><i></i></div>
+                        <div class="ac-step st1"><span></span>Received</div>
+                        <div class="ac-step st2"><span></span>Diagnosed</div>
+                        <div class="ac-step st3"><span></span>In repair</div>
+                        <div class="ac-step st4"><span></span>Ready</div>
+                      </div>
+                      <div class="ac-cards">
+                        <div class="ac-card"><b>12</b><small>Repairs</small></div>
+                        <div class="ac-card warn"><b>3</b><small>Low stock</small></div>
+                        <div class="ac-card"><b>5</b><small>Mechanics</small></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </article>
-
-          <!-- 2. JNEC Events Hub -->
-          <article class="project-card">
-            <span class="project-type">Web Development</span>
+          <article id="proj-events" class="project-card reveal">
+            <div class="project-top">
+              <span class="project-type">Web Development</span>
+            </div>
+            <div class="project-art">
+              <svg viewBox="0 0 320 140" class="art">
+                <rect x="40" y="14" width="240" height="116" rx="8" class="a-frame"/>
+                <rect x="40" y="14" width="240" height="18" rx="8" class="a-bar"/>
+                <circle cx="52" cy="23" r="3" class="a-dot r"/><circle cx="62" cy="23" r="3" class="a-dot y"/><circle cx="72" cy="23" r="3" class="a-dot g"/>
+                <rect x="54" y="42" width="90" height="8" rx="4" class="a-fill"/>
+                <g class="a-cards">
+                  <rect x="54" y="60" width="64" height="56" rx="6" class="a-card c1"/>
+                  <rect x="128" y="60" width="64" height="56" rx="6" class="a-card c2"/>
+                  <rect x="202" y="60" width="64" height="56" rx="6" class="a-card c3"/>
+                </g>
+                <rect x="62" y="70" width="20" height="20" rx="4" class="a-fill"/><rect x="136" y="70" width="20" height="20" rx="4" class="a-fill"/><rect x="210" y="70" width="20" height="20" rx="4" class="a-fill"/>
+                <rect x="62" y="98" width="44" height="5" rx="2.5" class="a-line"/><rect x="136" y="98" width="44" height="5" rx="2.5" class="a-line"/><rect x="210" y="98" width="44" height="5" rx="2.5" class="a-line"/>
+              </svg>
+            </div>
             <h3>JNEC Events Hub</h3>
             <p>
-              A multi-page website where students can find and register for college events,
-              with Home, Events, Register, Gallery and Contact pages.
+              A multi-page website for discovering and registering for college events at Jigme Namgyel Engineering College,
+              with Home, Events, Register, Gallery and Contact pages and a responsive layout.
             </p>
-            <ul class="tech">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JavaScript</li>
-            </ul>
-            <a href="https://github.com/05250179jnec-arch/events_hub" target="_blank" rel="noopener">GitHub Repo ↗</a>
+            <ul class="tech"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+            <div class="project-links">
+              <a href="https://github.com/05250179jnec-arch/events_hub" target="_blank" rel="noopener" class="link">GitHub Repo ↗</a>
+            </div>
           </article>
 
-          <!-- 3. Task Manager -->
-          <article class="project-card">
-            <span class="project-type">Full-Stack</span>
+          <article id="proj-task" class="project-card reveal">
+            <div class="project-top">
+              <span class="project-type">Full-Stack</span>
+            </div>
+            <div class="project-art">
+              <svg viewBox="0 0 320 140" class="art">
+                <rect x="20" y="40" width="70" height="60" rx="8" class="a-frame"/><text x="55" y="76" class="a-label">Client</text>
+                <rect x="125" y="40" width="70" height="60" rx="8" class="a-frame accent"/><text x="160" y="70" class="a-label">Express</text><text x="160" y="84" class="a-sub">REST API</text>
+                <g transform="translate(230 38)"><ellipse cx="35" cy="8" rx="32" ry="8" class="a-frame"/><path d="M3 8v48c0 4.4 14.3 8 32 8s32-3.6 32-8V8" class="a-frame"/><text x="35" y="42" class="a-label">MySQL</text></g>
+                <path d="M90 62h35M195 62h35" class="a-wire"/><path d="M125 78H90M230 78h-35" class="a-wire"/>
+                <circle r="4" class="a-pkt"><animateMotion dur="2.4s" repeatCount="indefinite" path="M90 62h140"/></circle>
+                <circle r="4" class="a-pkt alt"><animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite" path="M230 78H90"/></circle>
+                <text x="108" y="56" class="a-sub">GET</text><text x="210" y="94" class="a-sub">rows</text>
+              </svg>
+            </div>
             <h3>Task Manager (Task API Frontend)</h3>
             <p>
-              A frontend connected to a REST API built with Express and a cloud MySQL database
-              on Aiven, where users can create, view, update and delete tasks.
+              A task-management frontend connected to a REST API built with Express and a cloud MySQL database on Aiven,
+              letting users create, view, update and delete tasks stored in the database. Built step by step with Git commits.
             </p>
-            <ul class="tech">
-              <li>JavaScript</li>
-              <li>Node.js</li>
-              <li>Express</li>
-              <li>MySQL (Aiven)</li>
-            </ul>
-            <a href="https://github.com/05250179jnec-arch/Task_API.git" target="_blank" rel="noopener">GitHub Repo ↗</a>
+            <ul class="tech"><li>JavaScript</li><li>Node.js</li><li>Express</li><li>MySQL (Aiven)</li></ul>
+            <div class="project-links">
+              <a href="https://github.com/05250179jnec-arch/Task_API" target="_blank" rel="noopener" class="link">GitHub Repo ↗</a>
+            </div>
           </article>
 
-          <!-- 4. Bank Network -->
-          <article class="project-card">
-            <span class="project-type">Network Design</span>
+          <article id="proj-bank" class="project-card reveal">
+            <div class="project-top">
+              <span class="project-type">Network Design</span>
+            </div>
+            <div class="project-art">
+              <svg viewBox="0 0 320 140" class="art">
+                <path d="M60 70H130M190 70h70M160 50V22M160 90v28" class="a-wire"/>
+                <circle cx="40" cy="70" r="20" class="a-frame"/><text x="40" y="74" class="a-label">ISP</text>
+                <circle cx="160" cy="70" r="24" class="a-frame accent a-pulse"/><text x="160" y="68" class="a-label">R1</text><text x="160" y="80" class="a-sub">ACL</text>
+                <rect x="262" y="54" width="44" height="32" rx="6" class="a-frame"/><text x="284" y="74" class="a-label">LAN</text>
+                <rect x="138" y="4" width="44" height="18" rx="4" class="a-frame"/><text x="160" y="16" class="a-sub">WEB</text>
+                <rect x="138" y="118" width="44" height="18" rx="4" class="a-frame"/><text x="160" y="130" class="a-sub">DB</text>
+                <text x="95" y="62" class="a-sub">eBGP</text>
+                <circle r="4" class="a-pkt"><animateMotion dur="1.8s" repeatCount="indefinite" path="M60 70H136"/></circle>
+                <circle r="4" class="a-pkt alt"><animateMotion dur="1.8s" begin=".9s" repeatCount="indefinite" path="M184 70h78"/></circle>
+                <circle r="4" class="a-pkt deny"><animateMotion dur="2.6s" repeatCount="indefinite" path="M160 94v24"/></circle>
+              </svg>
+            </div>
             <h3>Bank Network with eBGP &amp; ACLs</h3>
             <p>
-              Designed a bank's network in Cisco Packet Tracer connected to one ISP,
-              using eBGP to exchange routes and Access Control Lists to filter traffic.
+              Designed and simulated a bank's network connected to a single ISP, using eBGP to exchange routes with the ISP
+              and Access Control Lists to filter traffic. Documented in a technical report and defended in a viva.
             </p>
-            <ul class="tech">
-              <li>Cisco Packet Tracer</li>
-              <li>eBGP</li>
-              <li>ACL</li>
-            </ul>
-            <p class="project-note">Packet Tracer file and report available on request</p>
+            <ul class="tech"><li>Cisco Packet Tracer</li><li>eBGP</li><li>ACL</li></ul>
+            <div class="project-links">
+              <span class="link muted">Packet Tracer file &amp; report available on request</span>
+            </div>
           </article>
 
-          <!-- 5. DHCP Lab -->
-          <article class="project-card">
-            <span class="project-type">Systems Lab</span>
+          <article id="proj-dhcp" class="project-card reveal">
+            <div class="project-top">
+              <span class="project-type">Systems Lab</span>
+            </div>
+            <div class="project-art">
+              <svg viewBox="0 0 320 140" class="art">
+                <rect x="20" y="40" width="70" height="60" rx="8" class="a-frame"/><text x="55" y="68" class="a-label">Client</text><text x="55" y="82" class="a-sub">0.0.0.0</text>
+                <rect x="230" y="40" width="70" height="60" rx="8" class="a-frame accent"/><text x="265" y="68" class="a-label">DHCP</text><text x="265" y="82" class="a-sub">Ubuntu</text>
+                <g class="dora">
+                  <g class="d1"><path d="M95 28h130" class="a-arrow"/><text x="160" y="22" class="a-sub">DISCOVER</text></g>
+                  <g class="d2"><path d="M225 58H95" class="a-arrow"/><text x="160" y="52" class="a-sub">OFFER</text></g>
+                  <g class="d3"><path d="M95 88h130" class="a-arrow"/><text x="160" y="82" class="a-sub">REQUEST</text></g>
+                  <g class="d4"><path d="M225 118H95" class="a-arrow"/><text x="160" y="112" class="a-sub">ACK · 192.168.10.25</text></g>
+                </g>
+              </svg>
+            </div>
             <h3>DHCP Server Setup &amp; Verification</h3>
             <p>
-              A group practical where we configured a DHCP server on Ubuntu Server virtual
-              machines and tested that client machines received IP addresses automatically.
+              Group practical (Group 7) where we configured a DHCP server on Ubuntu Server virtual machines, then tested and
+              verified automatic IP address assignment to client machines. Presented our findings to the class.
             </p>
-            <ul class="tech">
-              <li>Ubuntu Server</li>
-              <li>VirtualBox</li>
-              <li>DHCP</li>
-            </ul>
+            <ul class="tech"><li>Ubuntu Server</li><li>VirtualBox</li><li>DHCP</li></ul>
+            <div class="project-links">
+              <span class="link muted">Group presentation — Unit IV</span>
+            </div>
           </article>
 
-          <!-- 6. Smart Room Automation -->
-          <article class="project-card">
-            <span class="project-type">IoT · Embedded Systems</span>
-            <h3>Smart Room Automation with Arduino</h3>
-            <p>
-              Three Arduino systems: lights that switch on when a PIR sensor detects movement,
-              a dustbin that opens its lid when a hand comes near, and a door that opens
-              automatically using an ultrasonic sensor and servo motor.
-            </p>
-            <ul class="tech">
-              <li>Arduino Uno</li>
-              <li>PIR Sensor</li>
-              <li>HC-SR04</li>
-              <li>Servo Motor</li>
-              <li>Relay</li>
-            </ul>
+          <article id="proj-iot" class="project-card wide reveal">
+            <div class="wide-grid">
+              <div class="wide-text">
+                <div class="project-top">
+                  <span class="project-type">IoT · Embedded Systems</span>
+                </div>
+                <h3>Smart Room Automation with Arduino</h3>
+                <p>
+                  A mini project of three Arduino Uno systems that show how sensors, actuators and a microcontroller work
+                  together to automate a room, with energy-saving and touch-free designs for homes and public spaces.
+                </p>
+                <ul class="sub-projects">
+                  <li><strong>Smart Room Lighting</strong> — a PIR motion sensor detects a person and the Arduino switches an AC bulb through a relay module.</li>
+                  <li><strong>Smart Dustbin</strong> — an HC-SR04 ultrasonic sensor detects a hand and a servo motor opens the lid.</li>
+                  <li><strong>Automatic Door</strong> — the ultrasonic sensor detects a person approaching and a servo opens and closes the door.</li>
+                </ul>
+                <ul class="tech"><li>Arduino Uno</li><li>Arduino IDE (C++)</li><li>PIR Sensor</li><li>HC-SR04</li><li>Servo Motor</li><li>Relay Module</li></ul>
+              </div>
+
+              <div class="wide-media">
+                <div class="project-art">
+                  <svg viewBox="0 0 320 170" class="art iot-art">
+                    <!-- wires -->
+                    <path d="M86 52h40" class="a-wire"/>
+                    <path d="M86 118h40" class="a-wire"/>
+                    <path d="M194 52h34" class="a-wire"/>
+                    <path d="M194 118h34" class="a-wire"/>
+                    <!-- sensors -->
+                    <g transform="translate(26 30)">
+                      <rect width="60" height="44" rx="8" class="a-frame"/>
+                      <circle cx="30" cy="18" r="11" class="pir-dome"/>
+                      <text x="30" y="40" class="a-sub">PIR</text>
+                    </g>
+                    <circle cx="20" cy="52" r="6" class="motion-ring"/>
+                    <g transform="translate(26 96)">
+                      <rect width="60" height="44" rx="8" class="a-frame"/>
+                      <circle cx="18" cy="18" r="9" class="sonic"/><circle cx="42" cy="18" r="9" class="sonic"/>
+                      <text x="30" y="40" class="a-sub">HC-SR04</text>
+                    </g>
+                    <path d="M18 114 a10 10 0 0 0 0 12 M12 110 a18 18 0 0 0 0 20" class="sonic-wave"/>
+                    <!-- arduino -->
+                    <g transform="translate(126 30)">
+                      <rect width="68" height="110" rx="8" class="a-frame accent"/>
+                      <rect x="16" y="38" width="36" height="28" rx="3" class="chip"/>
+                      <g class="pins"><rect x="8" y="8" width="52" height="5" rx="2"/><rect x="8" y="97" width="52" height="5" rx="2"/></g>
+                      <circle cx="56" cy="24" r="3" class="led"/>
+                      <text x="34" y="84" class="a-label">UNO</text>
+                    </g>
+                    <!-- bulb -->
+                    <g transform="translate(228 28)">
+                      <circle cx="26" cy="22" r="26" class="bulb-glow"/>
+                      <path d="M16 22a10 10 0 1 1 20 0c0 5-4 7-4 11h-12c0-4-4-6-4-11z" class="bulb"/>
+                      <rect x="20" y="36" width="12" height="6" rx="2" class="a-line"/>
+                      <text x="26" y="58" class="a-sub">relay → bulb</text>
+                    </g>
+                    <!-- servo -->
+                    <g transform="translate(232 100)">
+                      <rect width="44" height="30" rx="6" class="a-frame"/>
+                      <g class="servo-arm"><rect x="20" y="10" width="34" height="6" rx="3" class="a-fill"/><circle cx="22" cy="13" r="5" class="a-fill alt"/></g>
+                      <text x="22" y="44" class="a-sub">servo</text>
+                    </g>
+                    <circle r="3.5" class="a-pkt"><animateMotion dur="2s" repeatCount="indefinite" path="M86 52h40"/></circle>
+                    <circle r="3.5" class="a-pkt"><animateMotion dur="2s" begin="1s" repeatCount="indefinite" path="M194 52h34"/></circle>
+                    <circle r="3.5" class="a-pkt alt"><animateMotion dur="2s" begin=".5s" repeatCount="indefinite" path="M86 118h40"/></circle>
+                    <circle r="3.5" class="a-pkt alt"><animateMotion dur="2s" begin="1.5s" repeatCount="indefinite" path="M194 118h34"/></circle>
+                  </svg>
+                </div>
+
+                <p class="gallery-label">Circuit diagrams &amp; system flow — click to enlarge</p>
+                <div class="iot-gallery">
+                  <button type="button" class="photo-thumb" data-full="assets/iot/light-circuit.jpg" data-title="Smart Room Lighting — PIR sensor, relay and bulb circuit"><img src="assets/iot/light-circuit.jpg" alt="Circuit: PIR sensor and relay wired to an Arduino Uno and AC bulb" loading="lazy" /></button>
+                  <button type="button" class="photo-thumb" data-full="assets/iot/servo-circuit.jpg" data-title="Ultrasonic sensor and servo circuit (dustbin and door)"><img src="assets/iot/servo-circuit.jpg" alt="Circuit: HC-SR04 ultrasonic sensor and servo motor wired to an Arduino Uno" loading="lazy" /></button>
+                  <button type="button" class="photo-thumb" data-full="assets/iot/light-flow.jpg" data-title="System flow — Smart Room Lighting"><img src="assets/iot/light-flow.jpg" alt="System flow diagram for the smart lighting system" loading="lazy" /></button>
+                  <button type="button" class="photo-thumb" data-full="assets/iot/dustbin-flow.jpg" data-title="System flow — Smart Dustbin"><img src="assets/iot/dustbin-flow.jpg" alt="System flow diagram for the smart dustbin" loading="lazy" /></button>
+                  <button type="button" class="photo-thumb" data-full="assets/iot/door-flow.jpg" data-title="System flow — Automatic Door"><img src="assets/iot/door-flow.jpg" alt="System flow diagram for the automatic door" loading="lazy" /></button>
+                </div>
+              </div>
+            </div>
           </article>
 
-          <!-- 7. DRUK SPORTS -->
-          <article class="project-card">
-            <span class="project-type">Hackathon · Team Raven</span>
-            <h3>DRUK SPORTS — Connecting Youth to Pro Pathways</h3>
-            <p>
-              Pitched at the JNEC Campus Hackathon: a platform that connects young football
-              players in Bhutan with certified coaches, training programs and local tournaments.
-            </p>
-            <ul class="tech">
-              <li>Startup Pitch</li>
-              <li>Market Research</li>
-              <li>Teamwork</li>
-            </ul>
-          </article>
+          <article id="proj-druk" class="project-card wide hackathon reveal">
+            <div class="wide-grid">
+              <div class="wide-text">
+                <div class="project-top">
+                  <span class="project-type">Hackathon · Startup Pitch</span>
+                  <span class="status-badge hack">JNEC Campus Hackathon · Team Raven</span>
+                </div>
+                <h3>DRUK SPORTS — Connecting Youth to Pro Pathways</h3>
+                <p>
+                  Built and pitched with Team Raven at JNEC's campus hackathon, run by the Department of Information Technology
+                  to encourage software, hardware and collaborative engineering projects among students.
+                  DRUK SPORTS is a digital + physical football development platform for Bhutan, where many young football
+                  talents never get discovered because there is no structured coaching or clear pathway to higher-level football.
+                </p>
+                <ul class="sub-projects">
+                  <li><strong>Platform</strong> — connects players with certified coaches through digital registration, smart matching and flexible session booking.</li>
+                  <li><strong>Pathway</strong> — structured training programs and organised local tournaments for exposure and a career route for youth athletes.</li>
+                  <li><strong>Business model</strong> — monthly training subscriptions, corporate sponsorships and tournament event fees.</li>
+                </ul>
+                <div class="ds-stats">
+                  <div><b data-count="88">0</b><span>of parents want structured training</span></div>
+                  <div><b data-count="92">0</b><span>of players want app access</span></div>
+                  <div><b>Nu.1000</b><span>/ month target price confirmed</span></div>
+                </div>
+                <p class="ds-note">Pilot survey of 100 participants in Thimphu and Paro.</p>
+                <ul class="tech"><li>Web Platform</li><li>Marketplace Model</li><li>Business Pitch</li><li>Market Research</li><li>Teamwork</li></ul>
+              </div>
 
+              <div class="wide-media">
+                <div class="ds-carousel" id="dsCarousel">
+                  <div class="ds-stage">
+                    <button type="button" class="ds-slide active photo-thumb" data-full="assets/druk/cover.jpg" data-title="DRUK SPORTS — Cover — DRUK SPORTS: Connecting Youth to Pro Pathways" aria-label="Open slide: Cover — DRUK SPORTS: Connecting Youth to Pro Pathways">
+                      <img src="assets/druk/cover.jpg" alt="DRUK SPORTS pitch slide: Cover — DRUK SPORTS: Connecting Youth to Pro Pathways" loading="lazy" />
+                    </button>
+                    <button type="button" class="ds-slide photo-thumb" data-full="assets/druk/problem.jpg" data-title="DRUK SPORTS — Problem — young football talent in Bhutan goes undiscovered" aria-label="Open slide: Problem — young football talent in Bhutan goes undiscovered">
+                      <img src="assets/druk/problem.jpg" alt="DRUK SPORTS pitch slide: Problem — young football talent in Bhutan goes undiscovered" loading="lazy" />
+                    </button>
+                    <button type="button" class="ds-slide photo-thumb" data-full="assets/druk/solution.jpg" data-title="DRUK SPORTS — Solution — a digital + physical football development platform" aria-label="Open slide: Solution — a digital + physical football development platform">
+                      <img src="assets/druk/solution.jpg" alt="DRUK SPORTS pitch slide: Solution — a digital + physical football development platform" loading="lazy" />
+                    </button>
+                    <button type="button" class="ds-slide photo-thumb" data-full="assets/druk/business-model.jpg" data-title="DRUK SPORTS — Business model — training fees, sponsorships and event fees" aria-label="Open slide: Business model — training fees, sponsorships and event fees">
+                      <img src="assets/druk/business-model.jpg" alt="DRUK SPORTS pitch slide: Business model — training fees, sponsorships and event fees" loading="lazy" />
+                    </button>
+                    <button type="button" class="ds-slide photo-thumb" data-full="assets/druk/market-demand.jpg" data-title="DRUK SPORTS — Market demand — pilot survey of 100 participants" aria-label="Open slide: Market demand — pilot survey of 100 participants">
+                      <img src="assets/druk/market-demand.jpg" alt="DRUK SPORTS pitch slide: Market demand — pilot survey of 100 participants" loading="lazy" />
+                    </button>
+                    <button type="button" class="ds-slide photo-thumb" data-full="assets/druk/timeline.jpg" data-title="DRUK SPORTS — Timeline — from MVP pilot to nationwide scaling" aria-label="Open slide: Timeline — from MVP pilot to nationwide scaling">
+                      <img src="assets/druk/timeline.jpg" alt="DRUK SPORTS pitch slide: Timeline — from MVP pilot to nationwide scaling" loading="lazy" />
+                    </button>
+                  </div>
+                  <div class="ds-controls">
+                    <button type="button" class="ds-arrow" id="dsPrev" aria-label="Previous slide">‹</button>
+                    <div class="ds-dots"><button type="button" class="ds-dot active" aria-label="Show slide 1"></button><button type="button" class="ds-dot" aria-label="Show slide 2"></button><button type="button" class="ds-dot" aria-label="Show slide 3"></button><button type="button" class="ds-dot" aria-label="Show slide 4"></button><button type="button" class="ds-dot" aria-label="Show slide 5"></button><button type="button" class="ds-dot" aria-label="Show slide 6"></button></div>
+                    <button type="button" class="ds-arrow" id="dsNext" aria-label="Next slide">›</button>
+                  </div>
+                </div>
+                <p class="gallery-label">Pitch deck — auto-plays, click a slide to enlarge</p>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
+
 
         <!-- Education section -->
     <section class="section" id="education">
