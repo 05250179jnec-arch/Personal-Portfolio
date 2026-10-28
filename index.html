@@ -1037,7 +1037,65 @@
       </figure>
     </div>
 
+    <!-- ===== 6. Contact ===== -->
+    <section class="section alt" id="contact">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-num">~/contact</span>
+          <h2>Contact</h2>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info reveal">
+            <p>I'm open to internships, collaborative projects and learning opportunities. Feel free to reach out!</p>
+            <a class="contact-item" href="mailto:klhamo2414@gmail.com">
+              <span class="ci-icon">✉</span>
+              <span><small>Email</small>klhamo2414@gmail.com</span>
+            </a>
+            <a class="contact-item" href="tel:+97577406154">
+              <span class="ci-icon">☎</span>
+              <span><small>Phone</small>+975 77406154</span>
+            </a>
+            <div class="contact-item">
+              <span class="ci-icon">⌂</span>
+              <span><small>Location</small>Taba, Thimphu, Bhutan</span>
+            </div>
+            <a class="contact-item" href="https://github.com/05250179jnec-arch" target="_blank" rel="noopener">
+              <span class="ci-icon">&lt;/&gt;</span>
+              <span><small>GitHub</small>github.com/05250179jnec-arch</span>
+            </a>
+          </div>
+
+          <form class="contact-form reveal" id="contactForm" novalidate>
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required />
+              <small class="error"></small>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required />
+              <small class="error"></small>
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
+              <small class="error"></small>
+            </div>
+            <button type="submit" class="btn btn-primary full">Send Message</button>
+            <p class="form-status" id="formStatus" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Kuenzang Lhamo. Built with HTML, CSS &amp; JavaScript.</p>
+      <a href="#home" class="back-top" id="backTop" aria-label="Back to top">↑</a>
+    </div>
+  </footer>
 
 </body>
 </html>
