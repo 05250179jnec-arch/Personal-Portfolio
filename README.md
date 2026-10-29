@@ -3,7 +3,6 @@
 **Author:** Kuenzang Lhamo
 **Programme:** Diploma in Computer System and Network, Jigme Namgyel Engineering College
 **Course:** Web Technology and Design
-**Deployed Website:** https://05250179jnec-arch.github.io/Personal-Portfolio/
 
 ---
 

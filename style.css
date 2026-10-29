@@ -1377,3 +1377,11 @@ main { overflow-x: clip; }
 }
 .glitch.gradient-text::before { animation: glitchA 7s infinite steps(1), gradientMove 6s linear infinite; }
 .glitch.gradient-text::after  { animation: glitchB 7s infinite steps(1), gradientMove 6s linear infinite; }
+
+/* ---------- Video inside a training card ---------- */
+.training-video { margin-top: 0.9rem; }
+.training-video video {
+  display: block; width: 100%; aspect-ratio: 640 / 428; border-radius: 10px;
+  background: #000; border: 1px solid var(--border); object-fit: contain;
+}
+.video-caption { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.4rem; font-style: italic; }
