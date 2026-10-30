@@ -2091,3 +2091,7 @@ body.has-cursor input, body.has-cursor textarea { cursor: text; }
 .xz-modal .pm-body { padding: 0.6rem; }
 .xz-modal .exp-card { margin: 0; border: none; box-shadow: none; opacity: 1; transform: none; }
 .lightbox { z-index: 700; }
+
+.tour-gallery.one { grid-template-columns: 1fr; }
+.tour-gallery.one .photo-thumb { aspect-ratio: 16 / 7; }
+.tour-media .jst-visual { align-self: stretch; }
