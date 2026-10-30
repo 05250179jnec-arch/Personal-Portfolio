@@ -297,8 +297,19 @@
           <h2>Projects</h2>
         </div>
 
+        <div class="proj-toolbar reveal">
+          <p class="proj-intro">Real projects from my coursework, hackathons and labs. Most of them you can <strong>try right here</strong>, no install needed.</p>
+          <div class="proj-filters" role="tablist" aria-label="Filter projects">
+            <button type="button" class="pf-btn active" data-pf="all">All <span>7</span></button>
+            <button type="button" class="pf-btn" data-pf="web">Web <span>3</span></button>
+            <button type="button" class="pf-btn" data-pf="network">Networking <span>2</span></button>
+            <button type="button" class="pf-btn" data-pf="iot">IoT <span>1</span></button>
+            <button type="button" class="pf-btn" data-pf="hack">Hackathon <span>1</span></button>
+          </div>
+        </div>
+
         <div class="projects-grid">
-          <article id="proj-autoconnection" class="project-card wide featured reveal">
+          <article id="proj-autoconnection" class="project-card wide featured reveal" data-pf="web">
             <div class="wide-grid">
               <div class="wide-text">
                 <div class="project-top">
@@ -361,8 +372,13 @@
                 </div>
               </div>
             </div>
+          
+            <div class="proj-actions">
+              <button type="button" class="btn btn-primary btn-sm try-btn" data-demo="proj-autoconnection">▶ Try it live</button>
+              <button type="button" class="btn btn-outline btn-sm cs-btn" data-cs="proj-autoconnection">Case study</button>
+            </div>
           </article>
-          <article id="proj-events" class="project-card reveal">
+          <article id="proj-events" class="project-card reveal" data-pf="web">
             <div class="project-top">
               <span class="project-type">Web Development</span>
             </div>
@@ -390,9 +406,13 @@
             <div class="project-links">
               <a href="https://github.com/05250179jnec-arch/events_hub" target="_blank" rel="noopener" class="link">GitHub Repo ↗</a>
             </div>
+          
+            <div class="proj-actions">
+              <button type="button" class="btn btn-outline btn-sm cs-btn" data-cs="proj-events">Case study</button>
+            </div>
           </article>
 
-          <article id="proj-task" class="project-card reveal">
+          <article id="proj-task" class="project-card reveal" data-pf="web">
             <div class="project-top">
               <span class="project-type">Full-Stack</span>
             </div>
@@ -416,9 +436,14 @@
             <div class="project-links">
               <a href="https://github.com/05250179jnec-arch/Task_API" target="_blank" rel="noopener" class="link">GitHub Repo ↗</a>
             </div>
+          
+            <div class="proj-actions">
+              <button type="button" class="btn btn-primary btn-sm try-btn" data-demo="proj-task">▶ Try it live</button>
+              <button type="button" class="btn btn-outline btn-sm cs-btn" data-cs="proj-task">Case study</button>
+            </div>
           </article>
 
-          <article id="proj-bank" class="project-card reveal">
+          <article id="proj-bank" class="project-card reveal" data-pf="network">
             <div class="project-top">
               <span class="project-type">Network Design</span>
             </div>
@@ -442,9 +467,14 @@
               and Access Control Lists to filter traffic. Documented in a technical report and defended in a viva.
             </p>
             <ul class="tech"><li>Cisco Packet Tracer</li><li>eBGP</li><li>ACL</li></ul>
+          
+            <div class="proj-actions">
+              <button type="button" class="btn btn-primary btn-sm try-btn" data-demo="proj-bank">▶ Try it live</button>
+              <button type="button" class="btn btn-outline btn-sm cs-btn" data-cs="proj-bank">Case study</button>
+            </div>
           </article>
 
-          <article id="proj-dhcp" class="project-card reveal">
+          <article id="proj-dhcp" class="project-card reveal" data-pf="network">
             <div class="project-top">
               <span class="project-type">Systems Lab</span>
             </div>
@@ -466,9 +496,14 @@
               verified automatic IP address assignment to client machines. Presented our findings to the class.
             </p>
             <ul class="tech"><li>Ubuntu Server</li><li>VirtualBox</li><li>DHCP</li></ul>
+          
+            <div class="proj-actions">
+              <button type="button" class="btn btn-primary btn-sm try-btn" data-demo="proj-dhcp">▶ Try it live</button>
+              <button type="button" class="btn btn-outline btn-sm cs-btn" data-cs="proj-dhcp">Case study</button>
+            </div>
           </article>
 
-          <article id="proj-iot" class="project-card wide reveal">
+          <article id="proj-iot" class="project-card wide reveal" data-pf="iot">
             <div class="wide-grid">
               <div class="wide-text">
                 <div class="project-top">
@@ -546,9 +581,14 @@
                 </div>
               </div>
             </div>
+          
+            <div class="proj-actions">
+              <button type="button" class="btn btn-primary btn-sm try-btn" data-demo="proj-iot">▶ Try it live</button>
+              <button type="button" class="btn btn-outline btn-sm cs-btn" data-cs="proj-iot">Case study</button>
+            </div>
           </article>
 
-          <article id="proj-druk" class="project-card wide hackathon reveal">
+          <article id="proj-druk" class="project-card wide hackathon reveal" data-pf="hack">
             <div class="wide-grid">
               <div class="wide-text">
                 <div class="project-top">
@@ -606,6 +646,10 @@
                 </div>
                 <p class="gallery-label">Pitch deck — auto-plays, click a slide to enlarge</p>
               </div>
+            </div>
+          
+            <div class="proj-actions">
+              <button type="button" class="btn btn-outline btn-sm cs-btn" data-cs="proj-druk">Case study</button>
             </div>
           </article>
         </div>
@@ -1182,6 +1226,24 @@
       </div>
     </section>
 
+    <!-- Project demo / case study window -->
+    <div class="pm" id="projModal" role="dialog" aria-modal="true" aria-labelledby="pmTitle" hidden>
+      <div class="pm-box">
+        <header class="pm-head">
+          <div>
+            <p class="pm-kicker" id="pmKicker"></p>
+            <h3 id="pmTitle"></h3>
+          </div>
+          <div class="pm-tabs" id="pmTabs" role="tablist">
+            <button type="button" class="pm-tab" data-tab="demo" role="tab">▶ Live demo</button>
+            <button type="button" class="pm-tab" data-tab="cs" role="tab">Case study</button>
+          </div>
+          <button type="button" class="pm-close" id="pmClose" aria-label="Close">✕</button>
+        </header>
+        <div class="pm-body" id="pmBody"></div>
+      </div>
+    </div>
+
     <!-- Certificate viewer -->
     <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Certificate viewer" hidden>
       <button type="button" class="lb-close" id="lbClose" aria-label="Close">✕</button>
@@ -1261,6 +1323,7 @@
   <script src="js/skillscroll.js"></script>
   <script src="js/edu-journey.js"></script>
   <script src="js/training.js"></script>
+  <script src="js/projects.js"></script>
   <script src="js/motion.js"></script>
   <script src="js/pro.js"></script>
 </body>
