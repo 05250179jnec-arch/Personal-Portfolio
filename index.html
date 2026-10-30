@@ -773,14 +773,23 @@
           </ol>
         </div>
 
-        <div class="edu-grid solo">
-          <div class="certs reveal">
-            <h3 class="sub-head">Training Programs</h3>
-            <div class="cert-card">
-              <h4>Digital Training Program</h4>
-              <p>Funded by GovTech Agency, delivered by Athang Training Academy</p>
-              <span>12-day course · 19 – 31 May 2025</span>
-              <div class="cert-photos">
+        <!-- Training programs: horizontal scroll gallery -->
+        <div class="tp-scroll" id="tpScroll">
+          <div class="tp-sticky">
+            <div class="tp-head">
+              <h3 class="sub-head">Training Programs</h3>
+              <p class="tp-count"><span id="tpNum">01</span> / 03</p>
+            </div>
+            <div class="tp-track" id="tpTrack">
+            <article class="tp-panel" style="--c:#22d3ee">
+              <span class="tp-num" aria-hidden="true">01</span>
+              <div class="tp-info">
+                <p class="tp-meta">12-day course · 19 – 31 May 2025</p>
+                <h4>Digital Training Program</h4>
+                <p>Funded by GovTech Agency, delivered by Athang Training Academy.</p>
+              </div>
+              <div class="tp-media">
+                <div class="cert-photos">
                 <button type="button" class="photo-thumb" data-full="assets/training/digital-group.jpg" data-title="Digital Training Program — participants with their certificates" aria-label="Open photo: participants with certificates">
                   <img src="assets/training/digital-group.jpg" alt="Digital Training Program participants holding their certificates" loading="lazy" />
                   <span class="cert-zoom">⤢ View</span>
@@ -790,24 +799,34 @@
                   <span class="cert-zoom">⤢ View</span>
                 </button>
               </div>
-            </div>
-            <div class="cert-card">
-              <h4>Advanced Career Strategy: Gaining a Competitive Edge</h4>
-              <p>Career development course</p>
-              <span>7-day course · 22 – 28 March 2025</span>
-              <div class="training-video">
+              </div>
+            </article>
+            <article class="tp-panel" style="--c:#a78bfa">
+              <span class="tp-num" aria-hidden="true">02</span>
+              <div class="tp-info">
+                <p class="tp-meta">7-day course · 22 – 28 March 2025</p>
+                <h4>Advanced Career Strategy: Gaining a Competitive Edge</h4>
+                <p>A career development course on building a competitive edge for the job market.</p>
+              </div>
+              <div class="tp-media">
+                <div class="training-video">
                 <video autoplay muted loop playsinline controls preload="auto" poster="assets/training/career-strategy-poster.jpg">
                   <source src="assets/training/career-strategy.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
                 <p class="video-caption">Highlights from the course and closing ceremony</p>
               </div>
-            </div>
-            <div id="training-eldp" class="cert-card">
-              <h4>Entrepreneurial Leadership Development Program (ELDP)</h4>
-              <p>Organised by Yangbum Cooperative. Built an entrepreneurial mindset and learned the skills and tools to plan and grow sustainable businesses.</p>
-              <span>Leadership &amp; entrepreneurship training · 2026</span>
-              <div class="cert-photos">
+              </div>
+            </article>
+            <article class="tp-panel" id="training-eldp" style="--c:#f472b6">
+              <span class="tp-num" aria-hidden="true">03</span>
+              <div class="tp-info">
+                <p class="tp-meta">Leadership &amp; entrepreneurship · 2026</p>
+                <h4>Entrepreneurial Leadership Development Program (ELDP)</h4>
+                <p>Organised by Yangbum Cooperative. Built an entrepreneurial mindset and learned the skills and tools to plan and grow sustainable businesses.</p>
+              </div>
+              <div class="tp-media">
+                <div class="cert-photos">
                 <button type="button" class="photo-thumb" data-full="assets/experience/eldp-session.jpg" data-title="ELDP 2026 — participant presentation session" aria-label="Open photo: ELDP presentation session">
                   <img src="assets/experience/eldp-session.jpg" alt="Participants listening to a presentation during the ELDP session" loading="lazy" />
                   <span class="cert-zoom">⤢ View</span>
@@ -817,21 +836,56 @@
                   <span class="cert-zoom">⤢ View</span>
                 </button>
               </div>
+              </div>
+            </article>
             </div>
-
-            <h3 class="sub-head">Achievements &amp; Activities</h3>
-            <ul class="achievements">
-              <li>Participant, JNEC Campus Hackathon — built and pitched DRUK SPORTS with Team Raven</li>
-              <li><strong>1st Place (Winner), National CTF 2026</strong> — cybersecurity Capture the Flag organised by GovTech Agency, with my JNEC team</li>
-              <li>3rd Place, 400m House Race — Certificate of Recognition (April 2024)</li>
-              <li>Certificate of Appreciation for 100% participation in school activities (2021)</li>
-              <li>Participant, Cross Country Championship, Drukgyel HSS (2022)</li>
-              <li>Active Scout member (2022) and school literary club member</li>
-              <li>Organised school cultural programmes and served as class representative</li>
-              <li>Volunteered in community clean-up and awareness programmes</li>
-            </ul>
+            <div class="tp-progress" aria-hidden="true"><span id="tpBar"></span></div>
           </div>
         </div>
+
+        <h3 class="sub-head ach-head reveal">Achievements &amp; Activities</h3>
+        <ul class="ach-grid" id="achGrid">
+            <li class="ach-card gold" style="--c:#facc15;--d:0">
+              <span class="ach-icon"><svg viewBox="0 0 24 24"><path d="M7 4h10v4a5 5 0 0 1-10 0z"/><path d="M7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4M12 13v4M8 21h8M9 17h6"/></svg></span>
+              <span class="ach-year">2026</span>
+              <p><strong>1st Place (Winner), National CTF 2026</strong> — cybersecurity Capture the Flag organised by GovTech Agency, with my JNEC team</p>
+            </li>
+            <li class="ach-card" style="--c:#38bdf8;--d:1">
+              <span class="ach-icon"><svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg></span>
+              <span class="ach-year">2026</span>
+              <p>Participant, JNEC Campus Hackathon — built and pitched DRUK SPORTS with Team Raven</p>
+            </li>
+            <li class="ach-card" style="--c:#fb923c;--d:2">
+              <span class="ach-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="15" r="5"/><path d="M8 3l2 7M16 3l-2 7M10 15l1.5 1.5L14 14"/></svg></span>
+              <span class="ach-year">2024</span>
+              <p>3rd Place, 400m House Race — Certificate of Recognition (April 2024)</p>
+            </li>
+            <li class="ach-card" style="--c:#a78bfa;--d:3">
+              <span class="ach-icon"><svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg></span>
+              <span class="ach-year">2021</span>
+              <p>Certificate of Appreciation for 100% participation in school activities (2021)</p>
+            </li>
+            <li class="ach-card" style="--c:#22d3ee;--d:4">
+              <span class="ach-icon"><svg viewBox="0 0 24 24"><circle cx="14" cy="4" r="2"/><path d="M6 21l4-7 3 2 2 5M8 11l3-4 4 2 3-2"/></svg></span>
+              <span class="ach-year">2022</span>
+              <p>Participant, Cross Country Championship, Drukgyel HSS (2022)</p>
+            </li>
+            <li class="ach-card" style="--c:#4ade80;--d:5">
+              <span class="ach-icon"><svg viewBox="0 0 24 24"><path d="M3 20L12 4l9 16zM12 4v16M9 20l3-6 3 6"/></svg></span>
+              <span class="ach-year">2022</span>
+              <p>Active Scout member (2022) and school literary club member</p>
+            </li>
+            <li class="ach-card" style="--c:#f472b6;--d:6">
+              <span class="ach-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20a6 6 0 0 1 12 0M14 20a4.5 4.5 0 0 1 8 0"/></svg></span>
+              <span class="ach-year">School</span>
+              <p>Organised school cultural programmes and served as class representative</p>
+            </li>
+            <li class="ach-card" style="--c:#2dd4bf;--d:7">
+              <span class="ach-icon"><svg viewBox="0 0 24 24"><path d="M5 19c0-9 6-14 15-14 0 9-5 15-14 15M5 19l7-7"/></svg></span>
+              <span class="ach-year">Community</span>
+              <p>Volunteered in community clean-up and awareness programmes</p>
+            </li>
+        </ul>
       </div>
     </section>
 
@@ -1206,6 +1260,7 @@
   <script src="js/skills-data.js"></script>
   <script src="js/skillscroll.js"></script>
   <script src="js/edu-journey.js"></script>
+  <script src="js/training.js"></script>
   <script src="js/motion.js"></script>
   <script src="js/pro.js"></script>
 </body>
