@@ -1442,3 +1442,212 @@ body.has-cursor input, body.has-cursor textarea { cursor: text; }
 @media (prefers-reduced-motion: reduce) {
   .section-head h2 .w > span { transform: none; transition: none; }
 }
+
+/* ==========================================================
+   Skill map: more life
+   ========================================================== */
+/* data packets moving along the links */
+.sm-packet { fill: var(--c); filter: drop-shadow(0 0 5px var(--c)); pointer-events: none; }
+
+/* ripples pulsing out of the centre */
+.sm-me-ripple {
+  fill: none; stroke: var(--accent); stroke-width: 2; opacity: 0;
+  transform-box: fill-box; transform-origin: center;
+  animation: smRipple 3s ease-out infinite;
+}
+.sm-me-ripple.r2 { animation-delay: 1.5s; }
+@keyframes smRipple { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(2.4); opacity: 0; } }
+
+/* each category ring breathes, one after another */
+.sm-hub-ring { transform-box: fill-box; transform-origin: center; animation: smBreathe 3.2s ease-in-out infinite; animation-delay: calc(var(--k) * 0.35s); }
+@keyframes smBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+.sm-hub.active .sm-hub-ring { animation: spin 10s linear infinite; transform-box: view-box; transform-origin: 0 0; }
+.sm-hub-core { transform-box: fill-box; transform-origin: center; transition: fill 0.3s, transform 0.3s cubic-bezier(.34,1.56,.64,1); }
+.sm-hub:hover .sm-hub-core, .sm-hub:focus-visible .sm-hub-core { transform: scale(1.12); }
+
+/* hover a category: its link glows, the others fade */
+#skillMap .sm-link, #skillMap .sm-packet { transition: opacity 0.3s; }
+#skillMap.sm-dim .sm-link:not(.hot) { opacity: 0.12 !important; }
+#skillMap.sm-dim .sm-packet { opacity: 0.25; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sm-me-ripple, .sm-hub-ring { animation: none; }
+}
+
+/* ==========================================================
+   Skills scroll story (pinned, scroll-driven)
+   ========================================================== */
+.skill-scroll { position: relative; margin: 0 0 3rem; --c: var(--accent); }
+.ss-sticky {
+  position: sticky; top: 70px; height: calc(100vh - 70px); overflow: hidden;
+  display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr); align-items: center; gap: 2rem;
+  border-radius: 20px; border: 1px solid var(--border);
+  background:
+    radial-gradient(circle at 70% 50%, color-mix(in srgb, var(--c) 18%, transparent), transparent 60%),
+    var(--surface);
+  transition: background 0.6s;
+  padding: 0 2.5rem;
+}
+.ss-bg-word {
+  position: absolute; top: 50%; left: 4%; white-space: nowrap; pointer-events: none;
+  font: 800 clamp(5rem, 16vw, 13rem) / 1 "Inter", sans-serif; letter-spacing: -0.05em;
+  color: transparent; -webkit-text-stroke: 1px color-mix(in srgb, var(--c) 35%, transparent);
+  opacity: 0.6; will-change: transform;
+}
+.ss-text { position: relative; z-index: 2; }
+.ss-count { font-family: "JetBrains Mono", monospace; font-size: 1rem; color: var(--c); font-weight: 600; }
+.ss-count #ssNum { font-size: 3.2rem; font-weight: 800; font-family: "Inter", sans-serif; letter-spacing: -0.04em; }
+.ss-total { color: var(--text-muted); }
+.ss-icon { width: 54px; height: 54px; border-radius: 14px; display: grid; place-items: center; margin: 1rem 0; background: color-mix(in srgb, var(--c) 18%, transparent); }
+.ss-icon svg { width: 28px; height: 28px; fill: none; stroke: var(--c); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ss-title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; }
+.ss-desc { color: var(--text-muted); margin-top: 0.8rem; max-width: 380px; }
+.skill-scroll.swap .ss-title, .skill-scroll.swap .ss-desc, .skill-scroll.swap .ss-icon { animation: ssIn 0.6s cubic-bezier(.2,.8,.2,1) both; }
+.skill-scroll.swap .ss-desc { animation-delay: 0.08s; }
+@keyframes ssIn { from { opacity: 0; transform: translateY(24px); } }
+
+.ss-stage { position: relative; height: 100%; perspective: 900px; z-index: 1; }
+.ss-group { position: absolute; inset: 0; transform-style: preserve-3d; }
+.ss-chip {
+  position: absolute; top: 50%; left: 50%; white-space: nowrap;
+  padding: 0.6rem 1.1rem; border-radius: 999px; font-weight: 600; font-size: 0.95rem;
+  color: var(--text); background: color-mix(in srgb, var(--c) 16%, var(--surface-2));
+  border: 1px solid color-mix(in srgb, var(--c) 55%, transparent);
+  box-shadow: 0 0 22px color-mix(in srgb, var(--c) 25%, transparent);
+  opacity: 0; will-change: transform, opacity;
+}
+.ss-progress { position: absolute; right: 1.2rem; top: 15%; bottom: 15%; width: 3px; border-radius: 3px; background: var(--border); }
+.ss-progress span { display: block; height: 100%; background: var(--c); transform-origin: top; transform: scaleY(0); border-radius: 3px; }
+.ss-hint {
+  position: absolute; left: 50%; bottom: 1.2rem; transform: translateX(-50%);
+  font-family: "JetBrains Mono", monospace; font-size: 0.8rem; color: var(--text-muted); transition: opacity 0.3s;
+}
+.ss-hint span { display: inline-block; animation: scrollCue 1.6s ease-in-out infinite; }
+.ss-explore { font-size: 1.3rem; margin-bottom: 1.2rem; color: var(--text-muted); font-weight: 600; }
+
+@media (max-width: 760px) {
+  .ss-sticky { grid-template-columns: 1fr; grid-template-rows: auto 1fr; padding: 1.5rem 1.2rem 2.5rem; gap: 0.5rem; align-items: start; }
+  .ss-count #ssNum { font-size: 2.4rem; }
+  .ss-icon { width: 44px; height: 44px; margin: 0.6rem 0; }
+  .ss-desc { font-size: 0.9rem; }
+  .ss-chip { font-size: 0.8rem; padding: 0.45rem 0.8rem; }
+  .ss-bg-word { top: 70%; }
+}
+@media (max-width: 760px) { .ss-progress { right: 0.5rem; } }
+
+/* ==========================================================
+   Space scene for the skills story (original illustration)
+   ========================================================== */
+.ss-sticky {
+  /* the space panel stays dark in both themes */
+  --text: #e2e8f0; --text-muted: #94a3b8; --surface-2: #1a2540; --border: #24324f;
+  background:
+    radial-gradient(circle at 62% 50%, color-mix(in srgb, var(--c) 22%, transparent), transparent 45%),
+    radial-gradient(ellipse at 20% 120%, rgba(56, 189, 248, 0.08), transparent 60%),
+    #040816;
+  color: var(--text);
+}
+.ss-stars { position: absolute; inset: 0 0 -30% 0; pointer-events: none; will-change: transform; }
+.ss-stars span { position: absolute; border-radius: 50%; background: #fff; opacity: 0.7; animation: twinkle 3.5s ease-in-out infinite; }
+@keyframes twinkle { 0%, 100% { opacity: 0.25; } 50% { opacity: 0.95; } }
+.ss-far-planet {
+  position: absolute; top: -12%; right: 8%; width: 230px; height: 230px; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle at 35% 35%, #c026d3 0%, #7e22ce 35%, #3b0764 70%, transparent 72%);
+  filter: blur(2px); opacity: 0.55; will-change: transform;
+}
+.ss-bg-word { opacity: 0.35; z-index: 0; }
+
+.ss-stage { transform-style: preserve-3d; }
+.ss-planet {
+  position: absolute; top: 50%; left: 50%; width: min(46%, 300px); aspect-ratio: 1;
+  transform: translate(-50%, -50%); transform-style: preserve-3d; pointer-events: none;
+}
+.ss-globe, .ss-rings { position: absolute; overflow: visible; }
+.ss-globe { inset: 0; width: 100%; height: 100%; animation: planetFloat 7s ease-in-out infinite; }
+.ss-rings { inset: -50%; width: 200%; height: 200%; }
+@keyframes planetFloat { 0%, 100% { transform: translateY(0) rotate(-6deg); } 50% { transform: translateY(-10px) rotate(-3deg); } }
+
+.ss-globe .glow { fill: none; stroke: #7dd3fc; stroke-width: 3; opacity: 0.35; filter: drop-shadow(0 0 14px #38bdf8); }
+.ss-globe .surface ellipse { fill: #bae6fd; opacity: 0.18; }
+.ss-globe .surface { transition: transform 0.2s linear; }
+.ss-globe .shell-left { transform-box: view-box; transform-origin: 0 0; }
+.ss-globe .face { transform-box: view-box; transform-origin: 0 0; opacity: 0; }
+.ss-globe .face .l1 { fill: #1d4ed8; }
+.ss-globe .face .l2 { fill: #4338ca; }
+.ss-globe .face .l3 { fill: #6d28d9; }
+.ss-globe .face .l4 { filter: drop-shadow(0 0 10px var(--c)); }
+.ss-globe .face .rim { fill: none; stroke: #f8fafc; stroke-width: 3; filter: drop-shadow(0 0 6px #e0f2fe); }
+.ss-globe .core-stop { stop-color: var(--c); transition: stop-color 0.6s; }
+
+.ss-rings .ring {
+  fill: none; stroke: #e0f2fe; stroke-width: 1.4; opacity: 0.45; stroke-dasharray: 60 22 4 22;
+  filter: drop-shadow(0 0 4px #7dd3fc); animation: ringFlow 9s linear infinite;
+}
+.ss-rings .r2 { opacity: 0.3; animation-duration: 13s; animation-direction: reverse; stroke: var(--c); }
+.ss-rings .r3 { opacity: 0.25; animation-duration: 6s; }
+@keyframes ringFlow { to { stroke-dashoffset: -216; } }
+
+.ss-chip { background: rgba(10, 18, 40, 0.75); backdrop-filter: blur(4px); }
+
+@media (max-width: 760px) {
+  .ss-planet { width: min(52%, 190px); }
+  .ss-far-planet { width: 140px; height: 140px; right: -6%; top: 30%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ss-stars span, .ss-globe, .ss-rings .ring { animation: none; }
+}
+@media (max-width: 760px) { .ss-far-planet { width: 110px; height: 110px; top: 40%; right: -10%; opacity: 0.35; } }
+
+/* topic icon inside the planet's core */
+.ss-globe .core-icon { transform-box: view-box; transform-origin: 0 0; opacity: 0; }
+.ss-globe .ci-bg { fill: rgba(4, 8, 22, 0.55); stroke: var(--c); stroke-width: 1.5; filter: drop-shadow(0 0 8px var(--c)); }
+.ss-globe .ci-ico { fill: none; stroke: #ffffff; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 4px var(--c)); }
+.ss-globe .ci-ico * { vector-effect: non-scaling-stroke; }
+
+/* ==========================================================
+   Topic illustrations in the centre of the skills story
+   ========================================================== */
+.ss-objs { position: absolute; inset: 0; transition: transform 0.15s linear; }
+.ss-obj {
+  position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible;
+  opacity: 0; transform: scale(0.6) rotate(-25deg);
+  transition: opacity 0.5s ease, transform 0.7s cubic-bezier(.34,1.56,.64,1);
+}
+.ss-obj.on { opacity: 1; transform: none; animation: planetFloat 6s ease-in-out infinite; }
+
+.ss-obj .halo { fill: color-mix(in srgb, var(--c) 10%, transparent); stroke: color-mix(in srgb, var(--c) 45%, transparent); stroke-width: 1.5; filter: drop-shadow(0 0 18px var(--c)); }
+.ss-obj .dev { fill: none; stroke: var(--c); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.ss-obj .dev.body, .ss-obj rect.dev, .ss-obj circle.dev { fill: rgba(8, 16, 40, 0.88); }
+.ss-obj .dev.body { stroke-width: 3.5; filter: drop-shadow(0 0 10px color-mix(in srgb, var(--c) 60%, transparent)); }
+.ss-obj .dev.back { opacity: 0.5; }
+.ss-obj .dim { fill: color-mix(in srgb, var(--c) 30%, transparent); }
+.ss-obj .dim-line { fill: none; stroke: color-mix(in srgb, var(--c) 45%, transparent); stroke-width: 2.5; stroke-linecap: round; }
+.ss-obj .pins { fill: none; stroke: #94a3b8; stroke-width: 5; stroke-dasharray: 3 5; }
+.ss-obj .link { fill: none; stroke: color-mix(in srgb, var(--c) 70%, transparent); stroke-width: 3; stroke-linecap: round; }
+.ss-obj .flow { stroke-dasharray: 6 8; animation: dash 0.8s linear infinite; }
+.ss-obj .led { fill: #4ade80; filter: drop-shadow(0 0 6px #4ade80); }
+.ss-obj .blink { animation: blink 1.2s step-end infinite; }
+.ss-obj .d2 { animation-delay: 0.4s; } .ss-obj .d3 { animation-delay: 0.8s; }
+.ss-obj .glyph { fill: #f8fafc; font: 700 22px "JetBrains Mono", monospace; filter: drop-shadow(0 0 6px var(--c)); }
+.ss-obj .glyph.big { font-size: 46px; fill: var(--c); }
+.ss-obj .glyph.small { font-size: 15px; }
+.ss-obj .wave { fill: none; stroke: var(--c); stroke-width: 3; stroke-linecap: round; animation: sigPulse 1.6s ease-in-out infinite; }
+.ss-obj .wave.w2 { animation-delay: 0.3s; }
+@keyframes sigPulse { 0%, 100% { opacity: 0.15; } 50% { opacity: 1; } }
+.ss-obj .node { fill: rgba(8,16,40,0.9); stroke: var(--c); stroke-width: 3.5; filter: drop-shadow(0 0 6px var(--c)); }
+.ss-obj .node.alt { stroke: #f472b6; filter: drop-shadow(0 0 6px #f472b6); }
+.ss-obj .node.merge { fill: var(--c); }
+.ss-obj .dot-r { fill: #ef4444; } .ss-obj .dot-y { fill: #eab308; } .ss-obj .dot-g { fill: #22c55e; }
+.ss-obj .scan { stroke: #f8fafc; stroke-width: 2.5; opacity: 0.8; filter: drop-shadow(0 0 6px var(--c)); animation: scanMove 2.4s ease-in-out infinite; }
+@keyframes scanMove { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(110px); } }
+.ss-obj .bar { fill: var(--c); transform-box: fill-box; transform-origin: bottom; animation: barGrow 2.4s ease-in-out infinite; }
+.ss-obj .b2 { animation-delay: 0.2s; } .ss-obj .b3 { animation-delay: 0.4s; } .ss-obj .b4 { animation-delay: 0.6s; }
+@keyframes barGrow { 0%, 100% { transform: scaleY(0.35); } 50% { transform: scaleY(1); } }
+.ss-obj .bubble { animation: bob 3s ease-in-out infinite; }
+.ss-obj .bubble.b2 { animation-delay: 1.2s; }
+.ss-obj .type { stroke-dasharray: 120; stroke-dashoffset: 120; animation: typeIn 3s ease-in-out infinite; }
+@keyframes typeIn { 0% { stroke-dashoffset: 120; } 50%, 100% { stroke-dashoffset: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ss-obj, .ss-obj * { animation: none !important; }
+}

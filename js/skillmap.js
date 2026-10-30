@@ -69,10 +69,17 @@
       skills: [["Leadership", ["eldp"]], ["Entrepreneurship", ["eldp", "druk"]], ["Teamwork", ["ctf", "autoconnection", "druk"]], ["Presentation", ["druk", "dhcp"]], ["Time Management", []], ["Analytical Thinking", ["ctf"]], ["Working Under Pressure", ["ctf", "prf"], "Under Pressure"]] }
   ];
 
+  // shared with the scroll story (js/skillscroll.js)
+  window.portfolioSkills = { categories: categories, icons: icons };
+
   const W = 700, CX = 350, CY = 275;
   const hubLayer = document.getElementById("smHubs");
   const skillLayer = document.getElementById("smSkills");
   const linkLayer = document.getElementById("smLinks");
+  // Packets travel along the links; kept in their own layer so link indexes stay the same
+  const packetLayer = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  packetLayer.setAttribute("id", "smPackets");
+  linkLayer.after(packetLayer);
   const panel = document.getElementById("skillPanel");
   const search = document.getElementById("skillSearch");
   const datalist = document.getElementById("skillList");
@@ -101,6 +108,8 @@
 
   // ---------- Build nodes ----------
   const me = el("g", { class: "sm-me" }, hubLayer);
+  el("circle", { r: 46, class: "sm-me-ripple" }, me);
+  el("circle", { r: 46, class: "sm-me-ripple r2" }, me);
   el("circle", { r: 58, class: "sm-me-ring" }, me);
   el("circle", { r: 46, class: "sm-me-core" }, me);
   const meText = el("text", { class: "sm-me-text", y: 8 }, me);
@@ -109,8 +118,13 @@
   meSub.textContent = "Kuenzang";
   makeButton(me, "Show all skill categories", () => select(null));
 
-  categories.forEach((cat) => {
+  categories.forEach((cat, ci) => {
     const g = el("g", { class: "sm-hub" }, hubLayer);
+    g.style.setProperty("--k", ci);
+    g.addEventListener("mouseenter", () => focusLink(ci, true));
+    g.addEventListener("mouseleave", () => focusLink(ci, false));
+    g.addEventListener("focus", () => focusLink(ci, true));
+    g.addEventListener("blur", () => focusLink(ci, false));
     g.style.setProperty("--c", cat.color);
     el("circle", { r: 36, class: "sm-hub-ring" }, g);
     el("circle", { r: 30, class: "sm-hub-core" }, g);
@@ -155,11 +169,36 @@
     const l = el("line", { x1, y1, x2, y2, class: "sm-link" }, linkLayer);
     l.style.setProperty("--c", color);
     l.style.animationDelay = delay + "s";
+    if (!reduceMotion) packet(x1, y1, x2, y2, color);
     return l;
+  }
+
+  // A small glowing "data packet" that loops along a link (SVG animateMotion)
+  function packet(x1, y1, x2, y2, color) {
+    const c = el("circle", { r: 4, class: "sm-packet" }, packetLayer);
+    c.style.setProperty("--c", color);
+    const m = el("animateMotion", {
+      path: "M" + x1 + " " + y1 + " L" + x2 + " " + y2,
+      dur: (1.6 + Math.random() * 1.4).toFixed(2) + "s",
+      begin: (Math.random() * 2).toFixed(2) + "s",
+      repeatCount: "indefinite"
+    }, c);
+    // start it now (elements added after page load ignore "begin" otherwise)
+    if (m.beginElement) { try { m.beginElement(); } catch (e) {} }
+  }
+
+  // Overview: hovering a category lights up its link and dims the rest
+  function focusLink(i, on) {
+    if (state.cat) return;
+    svg.classList.toggle("sm-dim", on);
+    const l = linkLayer.children[i];
+    if (l) l.classList.toggle("hot", on);
   }
 
   function layout() {
     linkLayer.innerHTML = "";
+    packetLayer.innerHTML = "";
+    svg.classList.remove("sm-dim");
     const n = categories.length;
 
     if (!state.cat) {

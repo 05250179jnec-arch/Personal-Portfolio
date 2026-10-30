@@ -67,23 +67,6 @@ onScroll();
 
 // ---------- 4. Terminal, network background and lab tools live in js/ ----------
 
-// ---------- 5. Skill category filter ----------
-const filterBtns = document.querySelectorAll(".filter-btn");
-const skillCards = document.querySelectorAll(".skill-card");
-
-filterBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    filterBtns.forEach((b) => b.classList.remove("active"));
-    btn.classList.add("active");
-
-    const filter = btn.dataset.filter;
-    skillCards.forEach((card) => {
-      const show = filter === "all" || card.dataset.category === filter;
-      card.classList.toggle("hide", !show);
-    });
-  });
-});
-
 // ---------- 6. Reveal sections as they scroll into view ----------
 const revealEls = document.querySelectorAll(".reveal");
 
