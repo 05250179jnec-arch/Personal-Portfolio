@@ -1651,3 +1651,145 @@ body.has-cursor input, body.has-cursor textarea { cursor: text; }
 @media (prefers-reduced-motion: reduce) {
   .ss-obj, .ss-obj * { animation: none !important; }
 }
+
+/* ==========================================================
+   Education journey (pinned, scroll-driven)
+   ========================================================== */
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.edu-journey { position: relative; margin-bottom: 3rem; --c: #38bdf8; }
+.ej-sticky {
+  --text: #e2e8f0; --text-muted: #94a3b8;
+  position: sticky; top: 70px; height: calc(100vh - 70px); overflow: hidden;
+  border-radius: 20px; border: 1px solid #24324f; color: var(--text);
+  background:
+    radial-gradient(circle at 60% 50%, color-mix(in srgb, var(--c) 16%, transparent), transparent 55%),
+    radial-gradient(circle at 60% 50%, #0b1a4a 0%, #040816 70%);
+  transition: background 0.6s;
+}
+.ej-warp { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ej-portal {
+  position: absolute; top: 50%; left: 60%; width: 90vh; height: 90vh; border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--c) 70%, transparent), inset 0 0 60px color-mix(in srgb, var(--c) 35%, transparent);
+  pointer-events: none; will-change: transform, opacity;
+}
+.ej-stops { position: absolute; inset: 0; pointer-events: none; }
+.ej-obj {
+  position: absolute; top: 50%; left: 60%; width: min(42vh, 320px); height: min(42vh, 320px);
+  overflow: visible; opacity: 0; will-change: transform, opacity;
+}
+.ej-obj .orb {
+  fill: color-mix(in srgb, var(--c) 14%, #060d24); stroke: var(--c); stroke-width: 2.5;
+  filter: drop-shadow(0 0 22px var(--c));
+}
+.ej-obj .ln { fill: none; stroke: #f1f5f9; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 6px var(--c)); }
+.ej-obj .ln.dim { stroke: var(--c); stroke-width: 3; }
+.ej-obj .flow { stroke-dasharray: 5 7; animation: dash 0.9s linear infinite; }
+.ej-obj .flag, .ej-obj .seal { fill: var(--c); filter: drop-shadow(0 0 6px var(--c)); }
+.ej-obj .yr { fill: var(--c); font: 800 22px "Inter", sans-serif; }
+
+.ej-text { position: absolute; left: 3rem; top: 50%; transform: translateY(-50%); max-width: 34%; z-index: 2; }
+.ej-count { font-family: "JetBrains Mono", monospace; color: var(--c); font-weight: 600; }
+.ej-count #ejNum { font: 800 3.2rem "Inter", sans-serif; letter-spacing: -0.04em; }
+.ej-total { color: var(--text-muted); }
+.ej-year { font-family: "JetBrains Mono", monospace; color: var(--c); font-size: 1.05rem; margin-top: 0.8rem; }
+.ej-title { font-size: clamp(1.6rem, 3.4vw, 2.6rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; margin: 0.3rem 0 0.6rem; }
+.ej-place { color: var(--text-muted); }
+.edu-journey.swap .ej-year, .edu-journey.swap .ej-title, .edu-journey.swap .ej-place { animation: ssIn 0.6s cubic-bezier(.2,.8,.2,1) both; }
+.edu-journey.swap .ej-title { animation-delay: 0.06s; }
+.edu-journey.swap .ej-place { animation-delay: 0.12s; }
+
+.ej-progress { position: absolute; left: 3rem; right: 3rem; bottom: 1.6rem; height: 3px; border-radius: 3px; background: rgba(255,255,255,0.12); }
+.ej-progress span { display: block; height: 100%; background: var(--c); transform-origin: left; transform: scaleX(0); border-radius: 3px; }
+.ej-hint { position: absolute; left: 50%; bottom: 2.6rem; transform: translateX(-50%); font-family: "JetBrains Mono", monospace; font-size: 0.8rem; color: var(--text-muted); transition: opacity 0.3s; white-space: nowrap; }
+.ej-hint span { display: inline-block; animation: scrollCue 1.6s ease-in-out infinite; }
+
+/* Training and achievements now use the full width */
+.edu-grid.solo { grid-template-columns: 1fr; }
+.edu-grid.solo .certs { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0 1.5rem; align-items: start; }
+.edu-grid.solo .certs > h3, .edu-grid.solo .certs > ul { grid-column: 1 / -1; }
+
+@media (max-width: 760px) {
+  .ej-text { left: 1.3rem; right: 1.3rem; top: 1.5rem; transform: none; max-width: none; }
+  .ej-count #ejNum { font-size: 2.4rem; }
+  .ej-obj, .ej-portal { left: 50%; top: 62%; }
+  .ej-obj { width: min(36vh, 240px); height: min(36vh, 240px); }
+  .ej-portal { width: 70vh; height: 70vh; }
+  .ej-progress { left: 1.3rem; right: 1.3rem; }
+}
+@media (prefers-reduced-motion: reduce) { .ej-obj .flow { animation: none; } }
+
+/* ==========================================================
+   Education journey v2: floating islands + ring tunnel
+   ========================================================== */
+.ej-sticky {
+  background:
+    radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--c) 14%, transparent), transparent 50%),
+    radial-gradient(circle at 50% 42%, #0a1640 0%, #030714 70%);
+}
+.ej-rings span {
+  position: absolute; top: 42%; left: 50%; width: 70vh; height: 70vh; border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--c) 60%, transparent), inset 0 0 40px color-mix(in srgb, var(--c) 25%, transparent);
+  opacity: 0; will-change: transform, opacity; pointer-events: none;
+}
+.ej-rings span:nth-child(even) { border-style: dashed; border-width: 1.5px; }
+
+/* comet with a glowing tail */
+.ej-comet {
+  position: absolute; top: 18%; left: -10%; width: 140px; height: 2px; pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.9));
+  border-radius: 2px; transform: rotate(18deg); opacity: 0;
+  animation: comet 9s linear infinite 1.5s;
+}
+.ej-comet::after { content: ""; position: absolute; right: -4px; top: -4px; width: 10px; height: 10px; border-radius: 50%; background: #fff; box-shadow: 0 0 14px 4px #fff; }
+@keyframes comet { 0% { left: -15%; top: 12%; opacity: 0; } 4% { opacity: 1; } 18% { left: 110%; top: 52%; opacity: 0; } 100% { left: 110%; top: 52%; opacity: 0; } }
+
+.ej-obj { top: 42%; left: 50%; width: min(52vh, 380px); height: min(52vh, 380px); }
+.ej-obj .bob { animation: islandBob 5s ease-in-out infinite; }
+.ej-obj .mini { animation: islandBob 4s ease-in-out infinite reverse; }
+.ej-obj .mini.m2 { animation-duration: 5.5s; }
+@keyframes islandBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+.ej-obj .isl-glow { fill: var(--c); opacity: 0.22; filter: blur(14px); }
+.ej-obj .rock { fill: #4c3b8a; }
+.ej-obj .rock-dark { fill: #2e2460; }
+.ej-obj .rock-light { fill: #6d5bb8; }
+.ej-obj .grass { fill: #0f766e; }
+.ej-obj .grass-top { fill: #14b8a6; opacity: 0.85; }
+.ej-obj .bld { fill: #e0e7ff; stroke: var(--c); stroke-width: 2.5; }
+.ej-obj .roof { fill: var(--c); stroke: #f8fafc; stroke-width: 1.5; stroke-linejoin: round; filter: drop-shadow(0 0 6px var(--c)); }
+.ej-obj .win { fill: var(--c); opacity: 0.85; animation: winGlow 3s ease-in-out infinite; }
+.ej-obj .win:nth-of-type(even) { animation-delay: 1.4s; }
+@keyframes winGlow { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+.ej-obj .door { fill: #1e1b4b; stroke: var(--c); stroke-width: 2; }
+.ej-obj .tree { fill: #10b981; }
+.ej-obj .trunk { stroke: #78350f; stroke-width: 3; }
+.ej-obj .pole { fill: none; stroke: #e2e8f0; stroke-width: 2.5; stroke-linejoin: round; }
+.ej-obj .flag, .ej-obj .beacon { fill: var(--c); filter: drop-shadow(0 0 6px var(--c)); }
+.ej-obj .flag { transform-box: fill-box; transform-origin: left center; animation: flagWave 1.6s ease-in-out infinite; }
+.ej-obj .beacon { animation: blink 1s step-end infinite; }
+.ej-obj .signal { fill: none; stroke: var(--c); stroke-width: 2.5; stroke-linecap: round; animation: sigPulse 1.6s ease-in-out infinite; }
+.ej-obj .signal.s2 { animation-delay: 0.3s; }
+.ej-obj .clock { fill: #1e1b4b; stroke: var(--c); stroke-width: 2.5; }
+.ej-obj .hand { stroke: #f8fafc; stroke-width: 2; stroke-linecap: round; }
+.ej-obj .banner rect { fill: var(--c); filter: drop-shadow(0 0 8px var(--c)); }
+.ej-obj .banner text { fill: #0b1120; font: 800 15px "Inter", sans-serif; }
+
+/* centred text under the island, like a caption */
+.ej-text { left: 50%; top: auto; bottom: 3.6rem; transform: translateX(-50%); max-width: 90%; width: 640px; text-align: center; }
+.ej-count { font-size: 0.85rem; }
+.ej-count #ejNum { font-size: 1.6rem; }
+.ej-year { margin-top: 0.2rem; }
+.ej-title { font-size: clamp(1.4rem, 3vw, 2.2rem); margin: 0.2rem 0 0.3rem; }
+.ej-hint { bottom: auto; top: 1.4rem; }
+
+@media (max-width: 760px) {
+  .ej-text { left: 50%; right: auto; top: auto; bottom: 3.2rem; transform: translateX(-50%); width: 92%; }
+  .ej-obj { left: 50%; top: 40%; width: min(44vh, 92vw); height: min(44vh, 92vw); }
+  .ej-rings span { top: 40%; width: 60vh; height: 60vh; }
+  .ej-count #ejNum { font-size: 1.4rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ej-obj *, .ej-comet { animation: none !important; }
+}
