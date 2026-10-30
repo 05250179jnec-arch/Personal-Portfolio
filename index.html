@@ -943,6 +943,72 @@
           <h2>Experience</h2>
         </div>
 
+        <div class="xz-scene" style="--c:#38bdf8">
+          <div class="xz-stage">
+            <div class="xz-photo"><img src="assets/experience/tour-techpark.jpg" alt="Study tour group outside Thimphu TechPark" /><div class="xz-shade"></div></div>
+            <div class="xz-copy">
+              <p class="xz-num">01 <span>/ 04</span></p>
+              <h3 class="xz-title">Industry Study Tour</h3>
+              <p class="xz-place">Thimphu · Oct 2026</p>
+              <div class="xz-more">
+                <span class="xz-badge">Study Tour</span>
+                <p>Visited GovTech, the IT Park, aBIT, NUK9, Dragon Coders and Selise to see how real ICT organisations run their networks, servers and security.</p>
+                <button type="button" class="xz-open" data-exp="exp-tour">See the details →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="xz-scene" style="--c:#f472b6">
+          <div class="xz-stage">
+            <div class="xz-photo"><img src="assets/experience/prf26-volunteers.jpg" alt="Student volunteers at PRF-26" /><div class="xz-shade"></div></div>
+            <div class="xz-copy">
+              <p class="xz-num">02 <span>/ 04</span></p>
+              <h3 class="xz-title">Student Volunteer at PRF-26</h3>
+              <p class="xz-place">Le Méridien, Paro · 15–17 Sep 2026</p>
+              <div class="xz-more">
+                <span class="xz-badge">Volunteer</span>
+                <p>Supported the GovTech Agency Protocol Team at the 26th APT Policy and Regulatory Forum, an international ICT and telecom event.</p>
+                <button type="button" class="xz-open" data-exp="exp-prf">See the details →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="xz-scene" style="--c:#facc15">
+          <div class="xz-stage">
+            <div class="xz-photo"><img src="assets/experience/ctf-winners.jpg" alt="JNEC CTF teams holding their certificates" /><div class="xz-shade"></div></div>
+            <div class="xz-copy">
+              <p class="xz-num">03 <span>/ 04</span></p>
+              <h3 class="xz-title">Winner, National CTF 2026</h3>
+              <p class="xz-place">GovTech Agency · 2-day competition</p>
+              <div class="xz-more">
+                <span class="xz-badge">🏆 1st Place</span>
+                <p>My JNEC team took first place in a cybersecurity Capture the Flag against teams from GCIT, JNEC and CST, thinking like both attackers and defenders.</p>
+                <button type="button" class="xz-open" data-exp="exp-ctf">See the details →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="xz-scene" style="--c:#f59e0b">
+          <div class="xz-stage">
+            <div class="xz-photo"><div class="xz-art" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 16l20-8-6 12-3-5-5 3z"/></svg><span>Bhutan → Japan</span></div><div class="xz-shade"></div></div>
+            <div class="xz-copy">
+              <p class="xz-num">04 <span>/ 04</span></p>
+              <h3 class="xz-title">Science & Technology Exchange</h3>
+              <p class="xz-place">Japan · JST</p>
+              <div class="xz-more">
+                <span class="xz-badge">Exchange</span>
+                <p>Selected for a short-term science and technology exchange in Japan, administered by the Japan Science and Technology Agency.</p>
+                <button type="button" class="xz-open" data-exp="exp-jst">See the details →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full details: shown in a pop-up when "See the details" is clicked -->
+        <div class="xz-details" id="xzDetails" hidden>
         <article id="exp-tour" class="exp-card reveal">
           <div class="exp-info">
             <div class="exp-top">
@@ -996,7 +1062,6 @@
             </div>
           </div>
         </article>
-
         <article id="exp-prf" class="exp-card reveal">
           <div class="exp-info">
             <div class="exp-top">
@@ -1030,7 +1095,6 @@
             </button>
           </div>
         </article>
-
         <article id="exp-ctf" class="exp-card reveal">
           <div class="exp-info">
             <div class="exp-top">
@@ -1082,7 +1146,6 @@
             </div>
           </div>
         </article>
-
         <article id="exp-jst" class="exp-card reveal">
           <div class="exp-info">
             <div class="exp-top">
@@ -1129,6 +1192,7 @@
             </svg>
           </div>
         </article>
+        </div>
       </div>
     </section>
 
@@ -1244,6 +1308,14 @@
       </div>
     </div>
 
+    <!-- Experience details window -->
+    <div class="pm xz-modal" id="expModal" role="dialog" aria-modal="true" aria-label="Experience details" hidden>
+      <div class="pm-box">
+        <button type="button" class="pm-close xz-close" id="expClose" aria-label="Close">✕</button>
+        <div class="pm-body" id="expBody"></div>
+      </div>
+    </div>
+
     <!-- Certificate viewer -->
     <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Certificate viewer" hidden>
       <button type="button" class="lb-close" id="lbClose" aria-label="Close">✕</button>
@@ -1324,6 +1396,7 @@
   <script src="js/edu-journey.js"></script>
   <script src="js/training.js"></script>
   <script src="js/projects.js"></script>
+  <script src="js/exp-zoom.js"></script>
   <script src="js/motion.js"></script>
   <script src="js/pro.js"></script>
 </body>

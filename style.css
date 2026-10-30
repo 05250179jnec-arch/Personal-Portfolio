@@ -2034,3 +2034,60 @@ body.has-cursor input, body.has-cursor textarea { cursor: text; }
   .dora { grid-template-columns: 1fr; }
   .dora-node.srv { order: 3; }
 }
+
+/* ==========================================================
+   Experience: photo zoom reveal
+   ========================================================== */
+.xz-scene { position: relative; height: 190vh; margin: 0 0 1.5rem; --c: var(--accent); }
+.xz-stage {
+  position: sticky; top: 70px; height: calc(100vh - 70px); overflow: hidden;
+  border-radius: 22px; background: radial-gradient(circle at 80% 50%, color-mix(in srgb, var(--c) 14%, transparent), transparent 60%), #050a18;
+  border: 1px solid #1e293b; color: #e2e8f0;
+}
+.xz-photo {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; z-index: 1;
+  box-shadow: 0 30px 80px -30px color-mix(in srgb, var(--c) 70%, transparent);
+}
+.xz-scene.settled .xz-photo { outline: 1px solid color-mix(in srgb, var(--c) 60%, transparent); }
+.xz-photo img { width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+.xz-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(3,7,18,0.92) 0%, rgba(3,7,18,0.55) 45%, rgba(3,7,18,0.1) 100%), linear-gradient(0deg, rgba(3,7,18,0.8), transparent 50%); pointer-events: none; }
+.xz-art { width: 100%; height: 100%; display: grid; place-content: center; justify-items: center; gap: 1rem; background: radial-gradient(circle, color-mix(in srgb, var(--c) 30%, transparent), #0b1120 70%); font: 600 1.1rem "JetBrains Mono", monospace; color: var(--c); }
+.xz-art svg { width: 90px; height: 90px; fill: none; stroke: var(--c); stroke-width: 1.5; stroke-linejoin: round; animation: bob 3s ease-in-out infinite; }
+
+.xz-copy { position: absolute; left: 5%; bottom: 10%; width: 42%; z-index: 2; }
+.xz-num { font-family: "JetBrains Mono", monospace; color: var(--c); font-weight: 700; font-size: 1.1rem; }
+.xz-num span { color: #94a3b8; font-weight: 400; }
+.xz-title {
+  font: 800 clamp(2.4rem, 5.5vw, 4.6rem) / 1.02 "Inter", sans-serif; letter-spacing: -0.04em; margin: 0.4rem 0 0.6rem;
+  transform-origin: left bottom; text-shadow: 0 2px 14px rgba(0,0,0,0.5);
+}
+.xz-place { font-family: "JetBrains Mono", monospace; color: #cbd5e1; font-size: 0.95rem; }
+.xz-more { margin-top: 1.2rem; opacity: 0; will-change: transform, opacity; }
+.xz-badge { display: inline-block; padding: 0.25rem 0.7rem; border-radius: 999px; background: color-mix(in srgb, var(--c) 20%, transparent); color: var(--c); font-weight: 700; font-size: 0.82rem; margin-bottom: 0.7rem; }
+.xz-more p { color: #94a3b8; line-height: 1.65; }
+.xz-more a { display: inline-block; margin-top: 0.8rem; color: var(--c); font-weight: 600; }
+.xz-more a:hover { text-decoration: underline; }
+
+@media (max-width: 760px) {
+  .xz-scene { height: 170vh; }
+  .xz-copy { left: 5%; width: 90%; bottom: 6%; }
+  .xz-title { font-size: clamp(2rem, 9vw, 2.8rem); }
+  .xz-more { margin-top: 0.6rem; }
+  .xz-more p { font-size: 0.9rem; }
+}
+@media (prefers-reduced-motion: reduce) { .xz-art svg { animation: none; } }
+
+/* ---------- Experience details pop-up ---------- */
+.xz-open {
+  display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.9rem; padding: 0.6rem 1.2rem;
+  border-radius: 10px; border: 1.5px solid var(--c); background: color-mix(in srgb, var(--c) 14%, transparent);
+  color: var(--c); font-weight: 700; font-size: 0.9rem; transition: background 0.25s, color 0.25s, transform 0.25s;
+}
+.xz-open:hover { background: var(--c); color: #0b1120; transform: translateX(4px); }
+.xz-scene { margin-bottom: 0; }
+.xz-scene + .xz-scene { margin-top: -1px; }
+.xz-modal .pm-box { position: relative; width: min(1100px, 100%); }
+.xz-close { position: absolute; top: 1rem; right: 1rem; z-index: 3; }
+.xz-modal .pm-body { padding: 0.6rem; }
+.xz-modal .exp-card { margin: 0; border: none; box-shadow: none; opacity: 1; transform: none; }
+.lightbox { z-index: 700; }
