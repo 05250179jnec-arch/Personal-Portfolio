@@ -68,3 +68,28 @@
     });
   }
 })();
+
+// ==========================================================
+// 4. Section headings slide up word by word
+// Each word is wrapped in two spans: the outer one hides
+// anything outside it (overflow: hidden), the inner one starts
+// below and slides up when the heading scrolls into view.
+// ==========================================================
+(function () {
+  document.querySelectorAll(".section-head h2").forEach((h2) => {
+    const words = h2.textContent.trim().split(/\s+/);
+    h2.setAttribute("aria-label", h2.textContent.trim()); // screen readers read the whole heading
+    h2.textContent = "";
+    words.forEach((word, i) => {
+      const outer = document.createElement("span");
+      outer.className = "w";
+      outer.setAttribute("aria-hidden", "true");
+      const inner = document.createElement("span");
+      inner.textContent = word;
+      inner.style.setProperty("--i", i);
+      outer.appendChild(inner);
+      h2.appendChild(outer);
+      if (i < words.length - 1) h2.appendChild(document.createTextNode(" "));
+    });
+  });
+})();

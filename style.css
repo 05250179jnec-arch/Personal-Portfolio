@@ -1421,3 +1421,24 @@ body.has-cursor input, body.has-cursor textarea { cursor: text; }
 /* ---------- Magnetic buttons: smooth return ---------- */
 .btn, .icon-btn, .logo, .back-top { transition: transform 0.35s cubic-bezier(.2,.8,.2,1), background 0.2s, color 0.2s, box-shadow 0.2s, border-color 0.2s, opacity 0.3s; }
 .logo { display: inline-block; }
+
+/* ---------- Headings: word-by-word slide-up ---------- */
+.section-head h2 .w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.08em; }
+.section-head h2 .w > span {
+  display: inline-block; transform: translateY(110%);
+  transition: transform 0.9s cubic-bezier(.2,.8,.2,1);
+  transition-delay: calc(0.15s + var(--i) * 0.09s);
+}
+.section-head.visible h2 .w > span { transform: none; }
+
+/* ---------- Projects: numbered like a case-study index ---------- */
+.projects-grid { counter-reset: project; }
+.projects-grid > .project-card { counter-increment: project; }
+.project-type::before {
+  content: counter(project, decimal-leading-zero) " / ";
+  color: var(--text-muted); font-weight: 700;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-head h2 .w > span { transform: none; transition: none; }
+}
