@@ -1385,3 +1385,39 @@ main { overflow-x: clip; }
   background: #000; border: 1px solid var(--border); object-fit: contain;
 }
 .video-caption { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.4rem; font-style: italic; }
+
+/* ==========================================================
+   Professional effects (Awwwards-inspired)
+   ========================================================== */
+
+/* ---------- Loading percentage ---------- */
+.boot-pct {
+  margin-top: 1.4rem; font-family: "Inter", sans-serif; font-weight: 800;
+  font-size: clamp(3rem, 12vw, 6rem); line-height: 1; color: #e2e8f0; letter-spacing: -0.04em;
+  opacity: 0; animation: bootIn 0.4s 0.2s forwards;
+}
+.boot-pct span { font-variant-numeric: tabular-nums; }
+
+/* ---------- Custom cursor ---------- */
+.cursor-dot, .cursor-ring {
+  position: fixed; top: 0; left: 0; z-index: 2000; pointer-events: none; border-radius: 50%;
+  display: none;
+}
+body.has-cursor .cursor-dot, body.has-cursor .cursor-ring { display: block; }
+.cursor-dot { width: 6px; height: 6px; margin: -3px 0 0 -3px; background: var(--accent); }
+.cursor-ring {
+  width: 34px; height: 34px; margin: -17px 0 0 -17px;
+  border: 1.5px solid var(--accent); opacity: 0.6;
+  transition: width 0.25s, height 0.25s, margin 0.25s, background 0.25s, opacity 0.25s;
+}
+.cursor-ring.hover { width: 60px; height: 60px; margin: -30px 0 0 -30px; background: var(--accent-soft); opacity: 1; }
+.cursor-ring.press { width: 26px; height: 26px; margin: -13px 0 0 -13px; }
+body.cursor-out .cursor-dot, body.cursor-out .cursor-ring { opacity: 0; }
+/* hide the normal arrow, but keep the text cursor in form fields */
+body.has-cursor, body.has-cursor a, body.has-cursor button, body.has-cursor [role="button"],
+body.has-cursor .photo-thumb, body.has-cursor select { cursor: none; }
+body.has-cursor input, body.has-cursor textarea { cursor: text; }
+
+/* ---------- Magnetic buttons: smooth return ---------- */
+.btn, .icon-btn, .logo, .back-top { transition: transform 0.35s cubic-bezier(.2,.8,.2,1), background 0.2s, color 0.2s, box-shadow 0.2s, border-color 0.2s, opacity 0.3s; }
+.logo { display: inline-block; }
