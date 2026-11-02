@@ -633,14 +633,7 @@ body.is-loading { overflow: hidden; }
 
 .hero-visual .terminal { margin-top: 0; }
 .hero { position: relative; }
-.scroll-cue {
-  position: absolute; left: 50%; bottom: 1.5rem; transform: translateX(-50%);
-  width: 26px; height: 42px; border: 2px solid var(--text-muted); border-radius: 14px;
-}
-.scroll-cue span {
-  position: absolute; left: 50%; top: 8px; width: 4px; height: 8px; margin-left: -2px;
-  border-radius: 2px; background: var(--accent); animation: scrollCue 1.6s ease-in-out infinite;
-}
+
 @keyframes scrollCue { 0% { opacity: 0; transform: translateY(0); } 40% { opacity: 1; } 100% { opacity: 0; transform: translateY(14px); } }
 
 /* ---------- Section heading underline ---------- */
@@ -763,7 +756,7 @@ a.contact-item:hover .ci-icon { transform: rotate(-10deg) scale(1.1); }
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .stats { justify-content: center; }
-  .scroll-cue { display: none; }
+  
 }
 @media (max-width: 420px) {
   .orbit-wrap { --size: 190px; --orbit: 260px; }
